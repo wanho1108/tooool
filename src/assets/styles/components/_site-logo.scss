@@ -1,0 +1,27 @@
+@charset 'utf-8';
+
+.site-logo {
+  position: absolute;
+  top: 44px;
+  left: 50px;
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: .875;
+}
+
+.site-logo__anchor {
+  display: block;
+}
+
+.site-logo__division {
+  display: block;
+}
+
+.site-logo__division--top {
+
+}
+
+.site-logo__division--bottom {
+  margin-left: 10px;
+}

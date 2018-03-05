@@ -1,0 +1,128 @@
+@charset 'utf-8';
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+  display: block;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+  font-family: 'Open Sans', AppleSDGothicNeo, Roboto, HelveticaNeue, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  background-color: $color-neon-blue;
+  color: #fff;
+  -webkit-text-size-adjust: none;
+}
+
+#wrapper {
+  position: relative;
+  height: 100%;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, hr, p, input, textarea, select, button, th, td, blockquote, figure {
+  padding: 0;
+  margin: 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, input, textarea, select, button, table {
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: inherit;
+}
+
+a, button {
+  cursor: pointer;
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+}
+
+a, input, textarea, button {
+  color: inherit;
+}
+
+img, fieldset, iframe {
+  border: 0;
+}
+
+hr {
+  border: solid #9a9a9a;
+  border-width: 1px 0 0 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, input, select, button, textarea {
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+address, cite, dfn, em {
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, em, mark, b {
+  font-weight: 300;
+}
+
+mark {
+  background: none;
+}
+
+small {
+  font-size: .86em;
+}
+
+code, kbd, pre, samp {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input, textarea {
+  box-sizing: border-box;
+}
+
+button, input[type='button'], input[type='submit'], input[type='reset'], input[type='image'] {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+input[type='file']::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+textarea {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  clip: rect(0 0 0 0);
+}
+
+fieldset {
+  min-width: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  word-break: break-all;
+}
