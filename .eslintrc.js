@@ -27,12 +27,12 @@ module.exports = {
   rules: {
     'eol-last': ['error', 'never'],
     'indent': 'off',
-    'vue/script-indent': ['error', 2, {
+    'indent-legacy': ['error', 2],
+    /*'vue/script-indent': ['error', 2, {
       baseIndent: 1
-    }],
-    'max-len': ['error', {
-      code: 200
-    }],
+    }],*/
+    'max-len': 'off',
+    'no-underscore-dangle': 'off',
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       js: 'never',

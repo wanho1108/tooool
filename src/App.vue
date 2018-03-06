@@ -16,4 +16,4 @@
   };
 </script>
 
-<style lang="scss" src="./assets/styles/style.scss"></style>
+<style lang="scss" src="@/assets/styles/style.scss"></style>

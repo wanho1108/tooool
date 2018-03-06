@@ -1,37 +1,50 @@
 <template>
-    <div>
-        <div class="app-switch-tab">
-            <ul role="tablist" class="app-switch-tab__list">
-                <li role="presentation" v-for="(tab, i) in tabList" :key="i" >
-                    <a :href="'#'+tab.hash" role="tab" :aria-controls="tab.hash" :aria-selected="tab.active" @click="selectTab(i)">{{tab.title}}</a>
-                </li>
-            </ul>
-        </div>
-        <div class="app-swtich-panel">
-            <slot></slot>
-        </div>
+  <div class="switch-tab">
+    <div role="tablist" :class="['switch-tab__menu', 'switch-tab__menu--'+tabActiveDirection]">
+      <div v-for="(tab, index) in tabs" :key="index" class="switch-tab__menu-item">
+        <a :href="'#switch-tab-'+tab.id" role="tab" :aria-controls="tab.id" :aria-selected="tab.label === tabActiveId" :class="['switch-tab__menu-btn', { 'is-active' : tab.id === tabActiveId }]" @click="tabChange(tab)">{{tab.label}}</a>
+      </div>
     </div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'app-switch-tab',
+    model: {
+      prop: 'tabActiveId',
+    },
+    props: {
+      tabActiveId: {
+        type: String,
+      },
+    },
     data() {
       return {
-        tabList: [],
+        tabs: [],
       };
     },
     methods: {
-      selectTab(index) {
-        this.tabList.forEach((_tab, _index) => {
-          this.tabList[_index].active = _index === index;
-          // eslint-disable-next-line
-          console.log(_index === index);
+      tabChange(tab) {
+        this.$emit('tab-change', tab);
+      },
+    },
+    computed: {
+      tabActiveDirection() {
+        let direction = null;
+        this.tabs.forEach((tab, index) => {
+          if (tab.id === this.tabActiveId) {
+            direction = index === 0 ? 'left' : 'right';
+          }
         });
+        return direction;
       },
     },
     created() {
-      this.tabList = this.$children;
+      this.$children.splice(2, this.$children.length);
+      this.$slots.default.splice(2, this.$slots.default.length);
+      this.tabs = this.$children;
     },
   };
 </script>

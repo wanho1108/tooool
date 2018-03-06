@@ -1,6 +1,11 @@
-@charset 'utf-8';
+@charset "utf-8";
 
 .content {
-    overflow: hidden;
-    text-align: center;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.content__wrapper {
+  width: 1060px;
+  margin: 0 auto;
 }

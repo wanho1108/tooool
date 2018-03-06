@@ -1,10 +1,11 @@
 <template>
-  <h2 class="content-heading">{{headingText}}</h2>
+  <h2 class="content-heading">
+    <slot></slot>
+  </h2>
 </template>
 
 <script>
   export default {
     name: 'app-content-heading',
-    props: ['headingText'],
   };
 </script>

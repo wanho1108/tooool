@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@charset "utf-8";
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
   display: block;
@@ -102,6 +102,22 @@ button, input[type='button'], input[type='submit'], input[type='reset'], input[t
 
 input[type='file']::-webkit-file-upload-button {
   cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #6e90fe;
+}
+
+::-moz-placeholder {
+  color: #6e90fe;
+}
+
+:-ms-input-placeholder {
+  color: #6e90fe;
+}
+
+:-moz-placeholder {
+  color: #6e90fe;
 }
 
 textarea {

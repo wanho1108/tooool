@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.about {
+  margin-top: 120px;
+}
+
+.about:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.about__division {
+  width: 500px;
+}
+
+.about__division--left {
+  float: left;
+}
+
+.about__division--right {
+  float: right;
+}
+
+.about__paragraph {
+  font-size: 1.8rem;
+  letter-spacing: -.03em;
+  line-height: 1.555;
+}
+
+.about__paragraph + .about__paragraph {
+  margin-top: 1.67em;
+}

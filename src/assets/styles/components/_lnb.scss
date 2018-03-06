@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@charset "utf-8";
 
 .lnb {
   position: absolute;
@@ -17,18 +17,54 @@
 }
 
 .lnb__listitem {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    margin: 0 15px;
-    vertical-align: top;
+  display: inline-block;
+  margin: 0 15px;
+  vertical-align: top;
 }
 
 .lnb__anchor {
-    display: block;
-    width: 36px;
-    height: 36px;    
-    border-radius: 5px; /* tmp */
-    background-color: #fff; /* tmp */
-    opacity: .8; /* tmp */
+  display: block;
+  width: 36px;
+  height: 36px;
+  font-size: 0;
+  text-align: center;
+}
+
+.lnb__anchor:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.lnb__ico {
+  display: inline-block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.lnb__ico--webfont {
+  width: 32px;
+  height: 23px;
+  background-image: url(../image/ico-webfont-32x23-fff.png);
+}
+
+.lnb__ico--calculator {
+  width: 24px;
+  height: 22px;
+  background-image: url(../image/ico-calculator-24x22-fff.png);
+}
+
+.lnb__ico--device {
+  width: 22px;
+  height: 22px;
+  background-image: url(../image/ico-device-22x22-fff.png);
+}
+
+.lnb__ico--contrast {
+  width: 22px;
+  height: 22px;
+  background-image: url(../image/ico-contrast-22x22-fff.png);
 }

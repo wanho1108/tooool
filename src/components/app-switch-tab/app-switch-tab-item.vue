@@ -1,7 +1,7 @@
 <template>
-    <section :id="this.hash" v-show="active" role="panel">
+    <!--<section :id="this.hash" v-show="active" role="panel">
         <slot></slot>
-    </section>
+    </section>-->
 </template>
 
 <script>
