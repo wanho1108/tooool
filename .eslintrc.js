@@ -26,6 +26,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'eol-last': ['error', 'never'],
+    'linebreak-style': ['error', 'windows'],
     'indent': 'off',
     'indent-legacy': ['error', 2],
     /*'vue/script-indent': ['error', 2, {
