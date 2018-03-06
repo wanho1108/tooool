@@ -76,6 +76,12 @@
     methods: {
       tabChange(tab) {
         this.tabActiveId = tab.id;
+        setTimeout(() => {
+          const tabPanel = document.getElementById(`switch-tab-${tab.id}`);
+          tabPanel.setAttribute('tabindex', '0');
+          tabPanel.focus();
+          tabPanel.setAttribute('tabindex', '-1');
+        }, 600);
       },
     },
     components: {

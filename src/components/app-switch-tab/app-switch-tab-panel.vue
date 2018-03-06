@@ -1,5 +1,5 @@
 <template>
-  <div role="panel" :id="'switch-tab-'+id" :class="['switch-tab__panel', { 'is-expanded': tabActiveIs }]">
+  <div :id="'switch-tab-'+id+'-panel'" role="panel" :aria-hidden="!tabActiveIs" :aria-expanded="tabActiveIs"  :aria-labelledby="'switch-tab-'+id+'-tab'" :class="['switch-tab__panel', { 'is-expanded': tabActiveIs }]">
     <slot></slot>
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
   <header role="banner" class="header">
     <h1 class="site-logo">
-      <a href="#" class="site-logo__anchor">
+      <router-link to="/" class="site-logo__anchor">
         <span class="site-logo__division site-logo__division--top">TOO</span>
         <span class="site-logo__division site-logo__division--bottom">OOL</span>
-      </a>
+      </router-link>
     </h1>
     <app-lnb></app-lnb>
   </header>
