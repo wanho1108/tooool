@@ -4,11 +4,21 @@
   position: absolute;
   bottom: 39px;
   left: 50%;
+  opacity: 0;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+  -webkit-transition: opacity .4s;
+  -mos-transition: opacity .4s;
+  -o-transition: opacity .4s;
+  -ms-transition: opacity .4s;
+  transition: opacity .4s;
+}
+
+.footer.is-show {
+  opacity: 1;
 }
 
 .footer__wrapper {

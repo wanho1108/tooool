@@ -12,16 +12,28 @@ export default new Router({
       path: '/',
       name: 'AppMain',
       component: AppMain,
+      meta: {
+        lnbShow: true,
+        footerShow: true,
+      },
     },
     {
       path: '/about',
       name: 'AppAbout',
       component: AppAbout,
+      meta: {
+        lnbShow: false,
+        footerShow: false,
+      },
     },
     {
       path: '/calculator',
       name: 'AppCalculator',
       component: AppCalculator,
+      meta: {
+        lnbShow: true,
+        footerShow: true,
+      },
     },
   ],
 });

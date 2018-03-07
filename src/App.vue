@@ -2,13 +2,13 @@
   <div id="wrapper">
     <app-header></app-header>
     <router-view></router-view>
-    <app-footer></app-footer>
+    <app-footer :class="{ 'is-show': $route.meta.footerShow }"></app-footer>
   </div>
 </template>
 
 <script>
-  import AppHeader from '@/components/app-header/';
-  import AppFooter from '@/components/app-footer/';
+  import AppHeader from '@/components/app-header';
+  import AppFooter from '@/components/app-footer';
 
   export default {
     name: 'App',

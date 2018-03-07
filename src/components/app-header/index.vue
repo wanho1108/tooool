@@ -6,7 +6,7 @@
         <span class="site-logo__division site-logo__division--bottom">OOL</span>
       </router-link>
     </h1>
-    <app-lnb></app-lnb>
+    <app-lnb :class="{ 'is-show': $route.meta.lnbShow }"></app-lnb>
   </header>
 </template>
 
