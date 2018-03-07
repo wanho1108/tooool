@@ -6,6 +6,7 @@
   left: 50%;
   font-size: 0;
   opacity: 0;
+  pointer-events: none;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -o-transform: translateX(-50%);
@@ -20,6 +21,7 @@
 
 .lnb.is-show {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .lnb__wrapper {
