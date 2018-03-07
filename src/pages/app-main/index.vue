@@ -1,7 +1,7 @@
 <template>
   <div class="content" role="main">
     <div class="content__wrapper">
-      <app-content-heading>Tooool main</app-content-heading>
+      <app-content-heading>Guide Page</app-content-heading>
     </div>
   </div>
 </template>

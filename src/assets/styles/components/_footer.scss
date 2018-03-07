@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.footer {
+  position: absolute;
+  bottom: 39px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.footer__wrapper {
+
+}
+
+.footer__copyright {
+  font-size: 1.5rem;
+  opacity: .5;
+}

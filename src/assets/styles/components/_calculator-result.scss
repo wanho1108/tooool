@@ -13,14 +13,14 @@
 }
 
 .calculator-result__summary-item + .calculator-result__summary-item {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .calculator-result__summary-label {
   position: relative;
-  top: -5px;
-  margin-right: 15px;
-  font-weight: 400;
+  top: -7px;
+  margin-right: 35px;
+  font-weight: 300;
   font-size: 1.8rem;
   vertical-align: bottom;
 }
@@ -31,15 +31,15 @@
 
 .calculator-result__summary-value {
   font-weight: 600;
-  font-size: 3.6rem;
+  font-size: 4rem;
   vertical-align: bottom;
 }
 
 .calculator-result__summary-unit {
   position: relative;
-  top: -8px;
+  top: -4px;
   margin-left: 10px;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   vertical-align: bottom;
 }
 
@@ -49,10 +49,10 @@
 
 .calculator-result__grid-width {
   position: relative;
-  padding-bottom: 7px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
   margin: 0 1px;
-  font-size: 14px;
+  font-size: 1.5rem;
 }
 
 .calculator-result__grid-width:before,
@@ -83,7 +83,8 @@
   height: 380px;
   padding-top: 20px;
   box-sizing: border-box;
-  font-size: 1.4rem;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.04));
+  font-size: 1.5rem;
   vertical-align: top;
 }
 

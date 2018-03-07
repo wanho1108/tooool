@@ -7,7 +7,7 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 html {
   overflow-y: scroll;
   height: 100%;
-  font-family: 'Open Sans', AppleSDGothicNeo, Roboto, HelveticaNeue, Helvetica, sans-serif;
+  font-family: 'Source Sans Pro', 'Noto Sans KR', AppleSDGothicNeo, Roboto, HelveticaNeue, Helvetica, sans-serif;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.2;
@@ -24,7 +24,7 @@ body {
 
 #wrapper {
   position: relative;
-  height: 100%;
+  min-height: 100%;
 }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, hr, p, input, textarea, select, button, th, td, blockquote, figure {

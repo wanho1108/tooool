@@ -1,7 +1,7 @@
 <template>
   <div class="content" role="main">
     <div class="content__wrapper">
-        <app-content-heading>calculator</app-content-heading>
+        <app-content-heading>Calculator</app-content-heading>
         <app-switch-tab v-model="tabActiveId" @tab-change="tabChange">
           <app-switch-tab-panel label="Grid" id="calculator-grid">
             <div class="calculator-fieldset">
