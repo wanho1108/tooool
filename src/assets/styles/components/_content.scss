@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+/*=
+
+  @group Components
+  @name Content
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-03-12
+
+*/
+
 .content {
   overflow: hidden;
   min-height: 100%;
@@ -20,51 +29,51 @@
 @-webkit-keyframes content {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -webkit-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
   }
 }
 
 @-moz-keyframes content {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -moz-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -moz-transform: translateY(0);
   }
 }
 
 @-o-keyframes content {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -o-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -o-transform: translateY(0);
   }
 }
 
 @-ms-keyframes content {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -ms-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -ms-transform: translateY(0);
   }
 }
 
 @keyframes content {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(100px);
   }
   100% {
     opacity: 1;

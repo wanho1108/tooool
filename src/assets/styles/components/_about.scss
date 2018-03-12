@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+/*=
+
+  @group Components
+  @name About
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-03-12
+
+*/
+
 .about {
   margin-top: 120px;
 }
@@ -21,7 +30,7 @@
 
 .about__greeting-division--translation {
   margin-top: 60px;
-  font-weight: 300;
+  font-weight: 100;
   letter-spacing: -.03em;
   opacity: .3;
 }
@@ -60,7 +69,7 @@
   content: '';
   position: absolute;
   right: 0;
-  bottom: 2px;
+  bottom: 4px;
   left: 0;
   height: 1px;
   background-color: #fff;

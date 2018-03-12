@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+/*=
+
+  @group Generic
+  @name Normalize
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-03-12
+
+*/
+
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
   display: block;
 }
@@ -7,9 +16,9 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 html {
   overflow-y: scroll;
   height: 100%;
+  font-weight: 300;
   font-family: 'Source Sans Pro', 'Noto Sans KR', AppleSDGothicNeo, Roboto, HelveticaNeue, Helvetica, sans-serif;
   font-size: 10px;
-  font-weight: 400;
   line-height: 1.2;
   word-break: break-all;
 }

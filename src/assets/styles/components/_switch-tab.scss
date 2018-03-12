@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+/*=
+
+  @group Components
+  @name Switch Tab
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-03-12
+
+*/
+
 .switch-tab {
   margin-top: 22px;
   text-align: center;
@@ -33,10 +42,16 @@
   overflow: hidden;
   position: absolute;
   top: 50%;
+  left: 50%;
   width: 17px;
   height: 4px;
   background-color: #fff;
   border-radius: 2px;
+  -webkit-transform: translate(-100%, -50%);
+  -moz-transform: translate(-100%, -50%);
+  -o-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
   -webkit-transition: -webkit-transform .4s;
   -moz-transition: -moz-transform .4s;
   -o-transition: -o-transform .4s;
@@ -45,11 +60,11 @@
 }
 
 .switch-tab__menu--left:after {
-  -webkit-transform: translate(-100%, -50%);
+  /*-webkit-transform: translate(-100%, -50%);
   -moz-transform: translate(-100%, -50%);
   -o-transform: translate(-100%, -50%);
   -ms-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);*/
 }
 
 .switch-tab__menu--right:after {
@@ -90,61 +105,61 @@
 
 .switch-tab__panel.is-expanded {
   display: block;
-  -webkit-animation: switch-tab-panel .6s;
-  -moz-animation: switch-tab-panel .6s;
-  -o-animation: switch-tab-panel .6s;
-  -ms-animation: switch-tab-panel .6s;
-  animation: switch-tab-panel .6s;
+  -webkit-animation: switch-tab-panel 1s;
+  -moz-animation: switch-tab-panel 1s;
+  -o-animation: switch-tab-panel 1s;
+  -ms-animation: switch-tab-panel 1s;
+  animation: switch-tab-panel 1s;
 }
 
 @-webkit-keyframes switch-tab-panel {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -webkit-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
   }
 }
 
 @-moz-keyframes switch-tab-panel {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -moz-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -moz-transform: translateY(0);
   }
 }
 
 @-o-keyframes switch-tab-panel {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -o-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -o-transform: translateY(0);
   }
 }
 
 @-ms-keyframes switch-tab-panel {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    -ms-transform: translateY(100px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    -ms-transform: translateY(0);
   }
 }
 
 @keyframes switch-tab-panel {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(100px);
   }
   100% {
     opacity: 1;
