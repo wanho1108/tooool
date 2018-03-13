@@ -6,23 +6,27 @@
           <app-switch-tab-panel label="Grid" id="calculator-grid">
             <div class="calculator-fieldset">
               <div class="calculator-fieldset__column">
-                <label for="calculator-fieldset-input-width" class="calculator-fieldset__label">전체넓이</label>
-                <input type="text" id="calculator-fieldset-input-width" maxlength="5" placeholder="1200" title="전체넓이(px)를 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--px" v-model="gridWidth" @keyup="gridDraw">
-                <span class="calculator-fieldset__unit" aria-hidden="true">px</span>
+                <!--<label for="calculator-fieldset-input-width" class="calculator-fieldset__label">전체넓이</label>
+                <input type="text" id="calculator-fieldset-input-width" maxlength="5" placeholder="1200" title="전체넓이(px)를 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input&#45;&#45;px" v-model="gridWidth" @keyup="gridDraw" @focus="gridWidth = ''">
+                <span class="calculator-fieldset__unit" aria-hidden="true">px</span>-->
+                <app-input id="calculator-fieldset-input-grid-width" title="전체넓이(px)를 입력해주세요." placeholder="1200" maxlength="4" add-class="input--underline">
+                  <app-input-label slot="label">전체넓이</app-input-label>
+                  <span class="input__unit" aria-hidden="true">px</span>
+                </app-input>
               </div>
               <div class="calculator-fieldset__column">
                 <label for="calculator-fieldset-input-column" class="calculator-fieldset__label">나눌갯수</label>
-                <input type="text" id="calculator-fieldset-input-column" maxlength="2" placeholder="12" title="나눌갯수(cols)를 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--cols" v-model="gridColumn" @keyup="gridDraw">
+                <input type="text" id="calculator-fieldset-input-column" maxlength="2" placeholder="12" title="나눌갯수(cols)를 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--cols" v-model="gridColumn" @keyup="gridDraw" @focus="gridColumn = ''" >
                 <span class="calculator-fieldset__unit" aria-hidden="true">cols</span>
               </div>
               <div class="calculator-fieldset__column">
                 <label for="calculator-fieldset-input-column-margin" class="calculator-fieldset__label">사이간격</label>
-                <input type="text" id="calculator-fieldset-input-column-margin" maxlength="5" placeholder="1200" title="사이간격(px)을 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--px" v-model="gridColumnMargin" @keyup="gridDraw">
+                <input type="text" id="calculator-fieldset-input-column-margin" maxlength="5" placeholder="1200" title="사이간격(px)을 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--px" v-model="gridColumnMargin" @keyup="gridDraw" @focus="gridColumnMargin = ''">
                 <span class="calculator-fieldset__unit" aria-hidden="true">px</span>
               </div>
               <div class="calculator-fieldset__column">
                 <label for="calculator-fieldset-input-margin" class="calculator-fieldset__label">전체여백</label>
-                <input type="text" id="calculator-fieldset-input-margin" maxlength="5" placeholder="1200" title="전체여백(px)을 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--px" v-model="gridMargin" @keyup="gridDraw">
+                <input type="text" id="calculator-fieldset-input-margin" maxlength="5" placeholder="1200" title="전체여백(px)을 입력해주세요." class="calculator-fieldset__input calculator-fieldset__input--px" v-model="gridMargin" @keyup="gridDraw" @focus="gridMargin = ''">
                 <span class="calculator-fieldset__unit" aria-hidden="true">px</span>
               </div>
             </div>
@@ -64,7 +68,8 @@
   import AppContentHeading from '@/components/app-content-heading';
   import AppSwitchTab from '@/components/app-switch-tab';
   import AppSwitchTabPanel from '@/components/app-switch-tab/app-switch-tab-panel';
-  import AppInputUnit from '@/components/app-input/app-input-unit';
+  import AppInput from '@/components/app-input';
+  import AppInputLabel from '@/components/app-input/app-input-label';
 
   export default {
     name: 'app-calculator',
@@ -127,7 +132,8 @@
       AppContentHeading,
       AppSwitchTab,
       AppSwitchTabPanel,
-      AppInputUnit,
+      AppInput,
+      AppInputLabel,
     },
   };
 </script>

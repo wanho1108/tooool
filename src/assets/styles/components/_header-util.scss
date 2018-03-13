@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*=
+
+  @group Components
+  @name Header Util
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-03-13
+
+*/
+
+.header__util {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+.header__util-anchor {
+  overflow: hidden;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 0;
+}
+
+.header__util-anchor.is-selected {
+  background-color: #fff;
+}

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div :class="['input', addClass]">
     <slot name="label"></slot>
-    <input type="text" :id="id" :maxlength="maxlength" :placeholder="placeholder" :title="title" class="" value="">
-    <slot name="unit"></slot>
+    <input type="text" :name="id" :id="id" :title="title" :placeholder="placeholder" :maxlength="maxlength" :class="['input__substance', addInputClass]">
+    <slot></slot>
   </div>
 </template>
 
@@ -12,17 +12,21 @@
     props: {
       id: {
         type: String,
-      },
-      maxlength: {
-        type: Number,
-      },
-      placeholder: {
-        type: String,
+        required: true,
       },
       title: {
         type: String,
       },
-      class: {
+      placeholder: {
+        type: String,
+      },
+      maxlength: {
+        type: Number,
+      },
+      addClass: {
+        type: String,
+      },
+      addInputClass: {
         type: String,
       },
     },

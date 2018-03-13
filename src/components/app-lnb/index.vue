@@ -3,11 +3,6 @@
       <h2 class="blind">메뉴</h2>
       <div class="lnb__wrapper">
           <ul>
-              <li class="lnb__listitem"><!-- tmp -->
-                  <router-link to="/about" active-class="is-selected" class="lnb__anchor" aria-label="about">
-                    <i aria-hidden="true" class="lnb__ico lnb__ico--about"></i>
-                  </router-link>
-              </li>
               <li class="lnb__listitem">
                   <router-link to="/webfont" active-class="is-selected" class="lnb__anchor" aria-label="webfont">
                     <i aria-hidden="true" class="lnb__ico lnb__ico--webfont"></i>
