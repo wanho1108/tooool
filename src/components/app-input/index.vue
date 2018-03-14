@@ -1,7 +1,7 @@
 <template>
   <div :class="['input', addClass]">
     <slot name="label"></slot>
-    <input :type="type" :name="id" :id="id" :title="title" :placeholder="placeholder" :maxlength="maxlength" :class="['input__substance', addInputClass]" :value="value" ref="input"  @focus="inputInit" @input="inputUpdate">
+    <input :type="type" :name="id" :id="id" :title="title" :placeholder="placeholder" :maxlength="maxlength" :class="['input__substance', addInputClass]" :value="value" ref="input" @input="inputUpdate">
     <slot></slot>
   </div>
 </template>
@@ -41,10 +41,6 @@
       },
     },
     methods: {
-      inputInit() {
-        this.$refs.input.value = '';
-        this.inputUpdate();
-      },
       inputUpdate() {
         this.$emit('input', this.$refs.input.value);
       },

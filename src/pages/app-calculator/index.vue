@@ -104,9 +104,10 @@
             const $gridColumnTemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--column" aria-label="나눈넓이" style="width:${gridColumnWidth}px">${gridColumnWidth}</div>`;
             const $gridColumnMarginTemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--column-margin" aria-label="사이간격" style="width:${gridColumnMargin}px">${gridColumnMargin}</div>`;
             $gridColumnArea.empty();
-            for (let i = 1; i <= gridColumn; i += 1) {
+            const gridColumnMax = gridColumn > 12 ? 12 : gridColumn;
+            for (let i = 1; i <= gridColumnMax; i += 1) {
               $gridColumnArea.append($gridColumnTemplate);
-              if (i !== gridColumn && gridColumnMargin) $gridColumnArea.append($gridColumnMarginTemplate);
+              if (i !== gridColumnMax && gridColumnMargin) $gridColumnArea.append($gridColumnMarginTemplate);
             }
             if (gridMargin) {
               const $gridMarginTtemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--margin" aria-label="전체여백" style="width:${gridMargin}px">${gridMargin}</div>`;
