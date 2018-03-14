@@ -1,12 +1,14 @@
 <template>
   <header role="banner" class="header">
-    <h1 class="site-logo">
-      <router-link to="/" class="site-logo__anchor">
-        <span class="blind">TOOOOL</span>
-      </router-link>
-    </h1>
-    <app-lnb :class="{ 'is-show': $route.meta.lnbShow }"></app-lnb>
-    <app-header-util></app-header-util>
+    <div class="header__wrapper">
+      <h1 class="site-logo">
+        <router-link to="/" class="site-logo__anchor">
+          <span class="blind">TOOOOL</span>
+        </router-link>
+      </h1>
+      <app-lnb :class="{ 'is-show': $route.meta.lnbShow }"></app-lnb>
+      <app-header-util></app-header-util>
+    </div>
   </header>
 </template>
 

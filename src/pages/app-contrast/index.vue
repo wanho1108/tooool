@@ -1,9 +1,9 @@
 <template>
-  <div class="content" role="main">
+  <main class="content" role="main">
     <div class="content__wrapper">
       <app-content-heading>Contrast</app-content-heading>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

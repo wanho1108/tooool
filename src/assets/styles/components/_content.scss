@@ -10,8 +10,8 @@
 */
 
 .content {
-  overflow: hidden;
-  min-height: 100%;
+  display: inline-block;
+  width: 100%;
   padding-bottom: 60px;
   box-sizing: border-box;
   -webkit-animation: content .8s;

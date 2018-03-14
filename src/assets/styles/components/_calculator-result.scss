@@ -113,6 +113,11 @@
   transition: all .4s;
 }
 
+.calculator-result__message {
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
 .calculator-result__grid-column--column {
   //width: 300px;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));

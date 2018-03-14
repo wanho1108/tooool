@@ -1,5 +1,5 @@
 <template>
-  <div class="content" role="main">
+  <main class="content" role="main">
     <div class="content__wrapper">
       <app-content-heading>Hi there ;)</app-content-heading>
       <div class="about">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

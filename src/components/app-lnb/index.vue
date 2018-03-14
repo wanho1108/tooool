@@ -4,9 +4,9 @@
       <div class="lnb__wrapper">
           <ul>
               <li class="lnb__listitem">
-                  <router-link to="/webfont" active-class="is-selected" class="lnb__anchor" aria-label="webfont">
-                    <i aria-hidden="true" class="lnb__ico lnb__ico--webfont"></i>
-                  </router-link>
+                <router-link to="/webfont" active-class="is-selected" class="lnb__anchor" aria-label="webfont">
+                  <i aria-hidden="true" class="lnb__ico lnb__ico--webfont"></i>
+                </router-link>
               </li>
               <li class="lnb__listitem">
                 <router-link to="/calculator" active-class="is-selected" class="lnb__anchor" aria-label="calculator">
