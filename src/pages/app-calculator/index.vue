@@ -49,7 +49,10 @@
               </div>
             </div>
             <div :class="['calculator-result calculator-result--error', { 'is-expanded': gridError }]" role="alert">
-              <p class="calculator-result__message">설정하신 입력 값으로 올바른 결과를 그릴 수 없습니다.<br>설정 값을 확인해주세요.</p>
+              <div class="calculator-result__message">
+                <em class="calculator-result__message-title">Oooops :-O</em>
+                <p class="calculator-result__message-paragraph">입력된 숫자가 너어어어어무 커요~ 다시 입력해보세요!</p>
+              </div>
             </div>
           </app-switch-tab-panel>
           <app-switch-tab-panel label="Golden" id="calculator-golden">

@@ -16,9 +16,11 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 html {
   overflow-y: scroll;
   height: 100%;
-  font-weight: 300;
+  font-weight: 400;
   font-family: 'Source Sans Pro', 'Noto Sans KR', AppleSDGothicNeo, Roboto, HelveticaNeue, Helvetica, sans-serif;
   font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.2;
   word-break: break-all;
 }
@@ -85,7 +87,7 @@ address, cite, dfn, em {
 }
 
 h1, h2, h3, h4, h5, h6, em, mark, b {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 mark {

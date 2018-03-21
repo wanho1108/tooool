@@ -31,7 +31,45 @@
 */
 
 .input--underline {
+  position: relative;
+  padding: 15px 0;
+}
 
+.input--underline:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  opacity: .3;
+}
+
+.input--underline:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: opacity .4s, width 0s .4s;
+  -moz-transition: opacity .4s, width 0s .4s;
+  -o-transition: opacity .4s, width 0s .4s;
+  -ms-transition: opacity .4s, width 0s .4s;
+  transition: opacity .4s, width 0s .4s;
+}
+
+.input--underline.is-focus:after {
+  width: 100%;
+  opacity: 1;
+  -webkit-transition: width .4s;
+  -moz-transition: width .4s;
+  -o-transition: width .4s;
+  -ms-transition: width .4s;
+  transition: width .4s;
 }
 
 .input--underline .input__label {
