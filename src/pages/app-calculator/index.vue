@@ -24,22 +24,22 @@
                 </app-input>
               </div>
               <div class="calculator-fieldset__column">
-                <app-input id="calculator-fieldset-input-grid-margin" title="전체여백(px)을 입력해주세요." placeholder="10" :maxlength="3" add-class="input--underline" v-model="gridMargin" @input="gridDraw">
-                  <app-input-label slot="label">전체여백</app-input-label>
+                <app-input id="calculator-fieldset-input-grid-margin" title="좌우여백(px)을 입력해주세요." placeholder="10" :maxlength="3" add-class="input--underline" v-model="gridMargin" @input="gridDraw">
+                  <app-input-label slot="label">좌우여백</app-input-label>
                   <span class="input__unit" aria-hidden="true">px</span>
                 </app-input>
               </div>
             </div>
-            <div :class="['calculator-result', { 'is-expanded': gridShow }]" aria-live="polite" aria-atomic="true">
+            <div :class="['calculator-result', { 'is-expanded': gridShow, 'is-placeholder': !gridShow && !gridError }]" aria-live="polite" aria-atomic="true">
               <div class="calculator-result__summary">
                 <div class="calculator-result__summary-item">
                   <strong class="calculator-result__summary-label">전체넓이</strong>
-                  <span class="calculator-result__summary-value js-grid-width"></span>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--width js-grid-width"></span>
                   <span class="calculator-result__summary-unit">px</span>
                 </div>
                 <div class="calculator-result__summary-item">
                   <strong class="calculator-result__summary-label">나눈넓이</strong>
-                  <span class="calculator-result__summary-value js-grid-column-width"></span>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--column js-grid-column-width"></span>
                   <span class="calculator-result__summary-unit">px</span>
                 </div>
               </div>
@@ -87,6 +87,9 @@
         this.tabActiveId = tab.id;
       },
       gridDraw() {
+        if (!this.gridShow && !this.gridError) {
+          // placeholder 처리
+        }
         let gridWidth = Number(this.gridWidth);
         const gridColumn = Number(this.gridColumn);
         if (gridWidth && gridColumn) {

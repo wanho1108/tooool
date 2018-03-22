@@ -54,6 +54,14 @@
   vertical-align: bottom;
 }
 
+.calculator-result__summary-value--width {
+  opacity: .3;
+}
+
+.calculator-result__summary-value--column {
+
+}
+
 .calculator-result__summary-unit {
   position: relative;
   top: -4px;
@@ -131,6 +139,10 @@
 .calculator-result__grid-column--column {
   //width: 300px;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+}
+
+.calculator-result__grid-column--column + .calculator-result__grid-column--column {
+  margin-left: 1px;
 }
 
 @-webkit-keyframes calculator-result {
