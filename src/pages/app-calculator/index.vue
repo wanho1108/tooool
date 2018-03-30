@@ -6,31 +6,31 @@
           <app-switch-tab-panel label="Grid" id="calculator-grid">
             <div class="calculator-fieldset">
               <div class="calculator-fieldset__column">
-                <app-input id="calculator-fieldset-input-grid-width" title="전체넓이(px)를 입력해주세요." placeholder="1200" :maxlength="4" add-class="input--underline" v-model="gridWidth" @input="gridDraw">
+                <app-input id="calculator-fieldset-input-grid-width" title="전체넓이(px)를 입력해주세요." placeholder="1400" :maxlength="4" add-class="input--underline" v-model="gridWidth" @input="gridDraw">
                   <app-input-label slot="label">전체넓이</app-input-label>
                   <span class="input__unit" aria-hidden="true">px</span>
                 </app-input>
               </div>
               <div class="calculator-fieldset__column">
-                <app-input id="calculator-fieldset-input-grid-column" title="나눌개수(cols)를 입력해주세요." placeholder="12" :maxlength="2" add-class="input--underline" add-input-class="input__substance--cols" v-model="gridColumn" @input="gridDraw">
+                <app-input id="calculator-fieldset-input-grid-column" title="나눌개수(cols)를 입력해주세요." placeholder="4" :maxlength="2" add-class="input--underline" add-input-class="input__substance--cols" v-model="gridColumn" @input="gridDraw">
                   <app-input-label slot="label">나눌개수</app-input-label>
                   <span class="input__unit" aria-hidden="true">cols</span>
                 </app-input>
               </div>
               <div class="calculator-fieldset__column">
-                <app-input id="calculator-fieldset-input-grid-column-margin" title="사이간격(px)을 입력해주세요." placeholder="10" :maxlength="3" add-class="input--underline" v-model="gridColumnMargin" @input="gridDraw">
+                <app-input id="calculator-fieldset-input-grid-column-margin" title="사이간격(px)을 입력해주세요." placeholder="20" :maxlength="3" add-class="input--underline" v-model="gridColumnMargin" @input="gridDraw">
                   <app-input-label slot="label">사이간격</app-input-label>
                   <span class="input__unit" aria-hidden="true">px</span>
                 </app-input>
               </div>
               <div class="calculator-fieldset__column">
-                <app-input id="calculator-fieldset-input-grid-margin" title="좌우여백(px)을 입력해주세요." placeholder="10" :maxlength="3" add-class="input--underline" v-model="gridMargin" @input="gridDraw">
+                <app-input id="calculator-fieldset-input-grid-margin" title="좌우여백(px)을 입력해주세요." placeholder="0" :maxlength="3" add-class="input--underline" v-model="gridMargin" @input="gridDraw">
                   <app-input-label slot="label">좌우여백</app-input-label>
                   <span class="input__unit" aria-hidden="true">px</span>
                 </app-input>
               </div>
             </div>
-            <div :class="['calculator-result', { 'is-expanded': gridShow, 'is-placeholder': !gridShow && !gridError }]" aria-live="polite" aria-atomic="true">
+            <div :class="['calculator-result', { 'is-expanded': !gridError, 'is-placeholder': gridPlaceholder }]" aria-live="polite" aria-atomic="true">
               <div class="calculator-result__summary">
                 <div class="calculator-result__summary-item">
                   <strong class="calculator-result__summary-label">전체넓이</strong>
@@ -56,6 +56,66 @@
             </div>
           </app-switch-tab-panel>
           <app-switch-tab-panel label="Golden" id="calculator-golden">
+            <div class="calculator-fieldset">
+              <div class="calculator-fieldset__column">
+                <app-input id="calculator-fieldset-input-grid-width" title="전체넓이(px)를 입력해주세요." placeholder="1400" :maxlength="4" add-class="input--underline" v-model="gridWidth" @input="gridDraw">
+                  <app-input-label slot="label" class="input__label--en">a+b</app-input-label>
+                  <span class="input__unit" aria-hidden="true">px</span>
+                </app-input>
+              </div>
+              <span class="calculator-fieldset__column calculator-fieldset__column--special-character">:</span>
+              <div class="calculator-fieldset__column">
+                <app-input id="calculator-fieldset-input-grid-column" title="나눌개수(cols)를 입력해주세요." placeholder="4" :maxlength="2" add-class="input--underline" v-model="gridColumn" @input="gridDraw">
+                  <app-input-label slot="label" class="input__label--en">a</app-input-label>
+                  <span class="input__unit" aria-hidden="true">px</span>
+                </app-input>
+              </div>
+              <span class="calculator-fieldset__column calculator-fieldset__column--special-character">=</span>
+              <div class="calculator-fieldset__column">
+                <app-input id="calculator-fieldset-input-grid-column-margin" title="사이간격(px)을 입력해주세요." placeholder="20" :maxlength="3" add-class="input--underline" v-model="gridColumnMargin" @input="gridDraw">
+                  <app-input-label slot="label" class="input__label--en">a</app-input-label>
+                  <span class="input__unit" aria-hidden="true">px</span>
+                </app-input>
+              </div>
+              <span class="calculator-fieldset__column calculator-fieldset__column--special-character">:</span>
+              <div class="calculator-fieldset__column">
+                <app-input id="calculator-fieldset-input-grid-margin" title="좌우여백(px)을 입력해주세요." placeholder="0" :maxlength="3" add-class="input--underline" v-model="gridMargin" @input="gridDraw">
+                  <app-input-label slot="label" class="input__label--en">b</app-input-label>
+                  <span class="input__unit" aria-hidden="true">px</span>
+                </app-input>
+              </div>
+            </div>
+            <div :class="['calculator-result', { 'is-expanded': !gridError, 'is-placeholder': gridPlaceholder }]" aria-live="polite" aria-atomic="true">
+              <div class="calculator-result__summary">
+                <div class="calculator-result__summary-item">
+                  <strong class="calculator-result__summary-label calculator-result__summary-label--en">a+b</strong>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--width js-grid-width"></span>
+                  <span class="calculator-result__summary-unit">px</span>
+                </div>
+                <span class="calculator-result__summary-item calculator-result__summary-item--special-character">:</span>
+                <div class="calculator-result__summary-item">
+                  <strong class="calculator-result__summary-label calculator-result__summary-label--en">a</strong>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--column js-grid-column-width"></span>
+                  <span class="calculator-result__summary-unit">px</span>
+                </div>
+                <span class="calculator-result__summary-item calculator-result__summary-item--special-character">=</span>
+                <div class="calculator-result__summary-item">
+                  <strong class="calculator-result__summary-label calculator-result__summary-label--en">a</strong>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--column js-grid-column-width"></span>
+                  <span class="calculator-result__summary-unit">px</span>
+                </div>
+                <span class="calculator-result__summary-item calculator-result__summary-item--special-character">:</span>
+                <div class="calculator-result__summary-item">
+                  <strong class="calculator-result__summary-label calculator-result__summary-label--en">b</strong>
+                  <span class="calculator-result__summary-value calculator-result__summary-value--column js-grid-column-width"></span>
+                  <span class="calculator-result__summary-unit">px</span>
+                </div>
+              </div>
+              <div class="calculator-result__grid">
+                <div class="calculator-result__grid-width js-grid-width" aria-label="전체넓이"></div>
+                <div class="calculator-result__grid-column-area js-grid-column-area"></div>
+              </div>
+            </div>
           </app-switch-tab-panel>
         </app-switch-tab>
     </div>
@@ -73,12 +133,12 @@
     name: 'app-calculator',
     data() {
       return {
-        tabActiveId: 'calculator-grid',
+        tabActiveId: 'calculator-golden',
         gridWidth: '',
+        gridMargin: '',
         gridColumn: '',
         gridColumnMargin: '',
-        gridMargin: '',
-        gridShow: false,
+        gridPlaceholder: true,
         gridError: false,
       };
     },
@@ -87,45 +147,50 @@
         this.tabActiveId = tab.id;
       },
       gridDraw() {
-        if (!this.gridShow && !this.gridError) {
-          // placeholder 처리
-        }
         let gridWidth = Number(this.gridWidth);
-        const gridColumn = Number(this.gridColumn);
-        if (gridWidth && gridColumn) {
-          const integerReg = /^[0-9]*$/;
-          const gridColumnMargin = Number(this.gridColumnMargin);
-          const gridMargin = Number(this.gridMargin);
-          let gridColumnWidth = (gridWidth - (gridMargin * 2) - ((gridColumn - 1) * gridColumnMargin)) / gridColumn;
-          if (gridColumnWidth >= 1) {
-            this.gridShow = true;
-            this.gridError = false;
-            while (integerReg.test(gridColumnWidth) === false) {
-              gridWidth -= 1;
-              gridColumnWidth = (gridWidth - (gridMargin * 2) - ((gridColumn - 1) * gridColumnMargin)) / gridColumn;
-            }
-            $('.js-grid-width').text(gridWidth);
-            $('.js-grid-column-width').text(gridColumnWidth);
-            const $gridColumnArea = $('.js-grid-column-area');
-            const $gridColumnTemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--column" aria-label="나눈넓이" style="width:${gridColumnWidth}px">${gridColumnWidth}</div>`;
-            const $gridColumnMarginTemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--column-margin" aria-label="사이간격" style="width:${gridColumnMargin}px">${gridColumnMargin}</div>`;
-            $gridColumnArea.empty();
-            const gridColumnMax = gridColumn > 12 ? 12 : gridColumn;
-            for (let i = 1; i <= gridColumnMax; i += 1) {
-              $gridColumnArea.append($gridColumnTemplate);
-              if (i !== gridColumnMax && gridColumnMargin) $gridColumnArea.append($gridColumnMarginTemplate);
-            }
-            if (gridMargin) {
-              const $gridMarginTtemplate = `<div class="calculator-result__grid-column calculator-result__grid-column--margin" aria-label="전체여백" style="width:${gridMargin}px">${gridMargin}</div>`;
-              $gridColumnArea.prepend($gridMarginTtemplate);
-              $gridColumnArea.append($gridMarginTtemplate);
-            }
-            return;
-          }
-          this.gridError = true;
+        let gridMargin = Number(this.gridMargin);
+        let gridColumn = Number(this.gridColumn);
+        let gridColumnMargin = Number(this.gridColumnMargin);
+        let gridColumnWidth = (gridWidth - (gridMargin * 2) - ((gridColumn - 1) * gridColumnMargin)) / gridColumn;
+        const integerReg = /^[0-9]*$/;
+        this.gridPlaceholder = (gridWidth === 0 || gridColumn === 0) === true;
+        if (this.gridPlaceholder) {
+          gridWidth = 1400;
+          gridMargin = 0;
+          gridColumn = 4;
+          gridColumnMargin = 20;
+          gridColumnWidth = (gridWidth - (gridMargin * 2) - ((gridColumn - 1) * gridColumnMargin)) / gridColumn;
         }
-        this.gridShow = false;
+        this.gridError = (gridColumnWidth > 0) === false;
+        if (this.gridError) {
+          return;
+        }
+        while (integerReg.test(gridColumnWidth) === false) {
+          gridWidth -= 1;
+          gridColumnWidth = (gridWidth - (gridMargin * 2) - ((gridColumn - 1) * gridColumnMargin)) / gridColumn;
+        }
+        const $gridWidth = $('.js-grid-width');
+        const $gridColumnWidth = $('.js-grid-column-width');
+        const $gridColumnArea = $('.js-grid-column-area');
+        const gridColumnMax = gridColumn > 12 ? 12 : gridColumn;
+        const $gridColumnTemp = `<div class="calculator-result__grid-column calculator-result__grid-column--column" aria-label="나눈넓이" style="width:${gridColumnWidth}px">${gridColumnWidth}</div>`;
+        const $gridColumnMarginTemp = `<div class="calculator-result__grid-column calculator-result__grid-column--column-margin" aria-label="사이간격" style="width:${gridColumnMargin}px">${gridColumnMargin}</div>`;
+        const $gridMarginTemp = `<div class="calculator-result__grid-column calculator-result__grid-column--margin" aria-label="전체여백" style="width:${gridMargin}px">${gridMargin}</div>`;
+        $gridWidth.text(gridWidth);
+        $gridColumnWidth.text(gridColumnWidth);
+        $gridColumnArea.empty();
+        for (let i = 1; i <= gridColumnMax; i += 1) {
+          $gridColumnArea.append($gridColumnTemp);
+          if (i !== gridColumnMax && gridColumnMargin) $gridColumnArea.append($gridColumnMarginTemp);
+        }
+        if (gridMargin) {
+          $gridColumnArea.prepend($gridMarginTemp);
+          $gridColumnArea.append($gridMarginTemp);
+        }
       },
+    },
+    mounted() {
+      this.gridDraw();
     },
     watch: {
       gridWidth(val) {
