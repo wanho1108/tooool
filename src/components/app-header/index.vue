@@ -6,7 +6,7 @@
           <span class="blind">TOOOOL</span>
         </router-link>
       </h1>
-      <app-lnb :class="{ 'is-show': $route.meta.lnbShow }"></app-lnb>
+      <app-lnb></app-lnb>
       <app-header-util></app-header-util>
     </div>
   </header>

@@ -9,6 +9,11 @@
 
 */
 
+.has-layout .lnb {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .lnb {
   position: absolute;
   top: 40px;
@@ -16,21 +21,8 @@
   font-size: 0;
   opacity: 0;
   pointer-events: none;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  -webkit-transition: opacity .4s;
-  -mos-transition: opacity .4s;
-  -o-transition: opacity .4s;
-  -ms-transition: opacity .4s;
   transition: opacity .4s;
-}
-
-.lnb.is-show {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .lnb__wrapper {

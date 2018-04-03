@@ -1,8 +1,8 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" :class="{ 'has-layout': $route.meta.layoutShow }">
     <app-header></app-header>
     <router-view></router-view>
-    <app-footer :class="{ 'is-show': $route.meta.footerShow }"></app-footer>
+    <app-footer></app-footer>
   </div>
 </template>
 

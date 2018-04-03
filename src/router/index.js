@@ -16,8 +16,7 @@ export default new Router({
       name: 'AppMain',
       component: AppMain,
       meta: {
-        lnbShow: true,
-        footerShow: true,
+        layoutShow: true,
       },
     },
     {
@@ -25,8 +24,7 @@ export default new Router({
       name: 'AppAbout',
       component: AppAbout,
       meta: {
-        lnbShow: false,
-        footerShow: false,
+        layoutShow: false,
       },
     },
     {
@@ -34,8 +32,7 @@ export default new Router({
       name: 'AppWebFont',
       component: AppWebFont,
       meta: {
-        lnbShow: true,
-        footerShow: true,
+        layoutShow: true,
       },
     },
     {
@@ -43,8 +40,7 @@ export default new Router({
       name: 'AppCalculator',
       component: AppCalculator,
       meta: {
-        lnbShow: true,
-        footerShow: true,
+        layoutShow: true,
       },
     },
     {
@@ -52,8 +48,7 @@ export default new Router({
       name: 'AppDevice',
       component: AppDevice,
       meta: {
-        lnbShow: true,
-        footerShow: true,
+        layoutShow: true,
       },
     },
     {
@@ -61,8 +56,7 @@ export default new Router({
       name: 'AppContrast',
       component: AppContrast,
       meta: {
-        lnbShow: true,
-        footerShow: true,
+        layoutShow: true,
       },
     },
   ],
