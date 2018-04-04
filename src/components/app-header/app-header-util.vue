@@ -1,6 +1,6 @@
 <template>
   <div class="header__util">
-    <router-link to="/about" active-class="is-selected" :aria-selected="isAcitve" class="header__util-anchor" @click.native="routerLink">About</router-link>
+    <router-link :to="to" :aria-selected="isActive" :class="['header__util-anchor', {'is-selected': isActive}]" @click.native="activeUpdate">About</router-link>
   </div>
 </template>
 
@@ -9,26 +9,28 @@
     name: 'app-header-util',
     data() {
       return {
-        to: '/',
-        isAcitve: false,
+        path: '/about',
+        pathPrev: '/',
+        isActive: false,
       };
     },
     methods: {
-      routerLink(e) {
-        if ($(e.target).hasClass('is-selected')) {
-          this.$router.push(this.to);
-          this.isAcitve = false;
-        } else {
-          this.isAcitve = true;
-        }
+      activeUpdate(e) {
+        this.isActive = e.target.classList.contains('is-selected') === false;
       },
     },
-    mounted() {
-      this.isAcitve = $(this.$el).find('.header__util-anchor').hasClass('is-selected');
+    computed: {
+      to() {
+        const pathNext = this.isActive ? this.pathPrev : this.path;
+        return pathNext;
+      },
+    },
+    created() {
+      this.isActive = this.$route.path === this.path;
     },
     watch: {
       $route(to, from) {
-        this.to = from.path;
+        this.pathPrev = from.path;
       },
     },
   };
