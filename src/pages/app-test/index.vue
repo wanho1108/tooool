@@ -17,16 +17,6 @@
 
   export default {
     name: 'app-test',
-    data() {
-      return {
-        tabActiveId: 'calculator-grid',
-      };
-    },
-    methods: {
-      tabChange(tab) {
-        this.tabActiveId = tab.id;
-      },
-    },
     components: {
       AppContentHeading,
       AppSwitchTab,
