@@ -6,11 +6,20 @@ import AppWebFont from '@/pages/app-webfont';
 import AppCalculator from '@/pages/app-calculator';
 import AppDevice from '@/pages/app-device';
 import AppContrast from '@/pages/app-contrast';
+import AppTest from '@/pages/app-test';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '/test',
+      name: 'AppTest',
+      component: AppTest,
+      meta: {
+        layoutShow: true,
+      },
+    },
     {
       path: '/',
       name: 'AppMain',
