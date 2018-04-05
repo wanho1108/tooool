@@ -7,7 +7,7 @@
           :href="tab.href"
           :id="`switch-tab-${tab.id}-btn`"
           :aria-controls="`switch-tab-${tab.id}-panel`"
-          :aria-selected="String(tab.isActive)"
+          :aria-selected="`${tab.isActive}`"
           :class="['switch-tab__menu-btn', {'is-active': tab.isActive}]"
           @click="tabChange(tab)">
           {{tab.label}}

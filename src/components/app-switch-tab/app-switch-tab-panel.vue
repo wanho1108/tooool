@@ -3,8 +3,8 @@
     role="panel"
     :id="`switch-tab-${id}-panel`"
     :aria-labelledby="`switch-tab-${id}-btn`"
-    :aria-expanded="String(isActive)"
-    :aria-hidden="String(isActive === false)"
+    :aria-expanded="`${isActive}`"
+    :aria-hidden="`${isActive} === false`"
     :class="['switch-tab__panel', {'is-expanded': isActive}]">
     <slot></slot>
   </div>
@@ -29,7 +29,7 @@
         return this.label.toLowerCase().replace(/ /g, '-');
       },
       href() {
-        return `#${this.$route.name}/${this.id}`;
+        return `/${this.$route.name}/${this.id}`;
       },
     },
     created() {

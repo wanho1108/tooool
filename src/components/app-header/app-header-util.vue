@@ -1,6 +1,6 @@
 <template>
   <div class="header__util">
-    <router-link :to="to" :aria-selected="String(isActive)" :class="['header__util-anchor', {'is-selected': isActive}]" @click.native="activeUpdate">About</router-link>
+    <router-link :to="to" :aria-selected="`${isActive}`" :class="['header__util-anchor', {'is-selected': isActive}]" @click.native="activeUpdate">About</router-link>
   </div>
 </template>
 

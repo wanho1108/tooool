@@ -2,14 +2,9 @@
   <main class="content" role="main">
     <div class="content__wrapper">
       <app-content-heading>Test</app-content-heading>
-      <app-tab>
-        <app-tab-panel name="Hello" active>
-          Hello Page
-        </app-tab-panel>
-        <app-tab-panel name="About Us">
-          About Us Page
-        </app-tab-panel>
-      </app-tab>
+      <div v-for="(item, key) in items" :key="key">
+      <router-link :to="item.message" >{{item.message}}</router-link>
+      </div>
     </div>
   </main>
 </template>
@@ -21,6 +16,14 @@
 
   export default {
     name: 'app-test',
+    data() {
+      return {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' },
+        ],
+      };
+    },
     components: {
       AppContentHeading,
       AppTab,
