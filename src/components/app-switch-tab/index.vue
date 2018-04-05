@@ -1,59 +1,58 @@
 <template>
   <div class="switch-tab">
-    <div role="tablist" :class="['switch-tab__menu', 'switch-tab__menu--'+tabActiveDirection]">
-      <div v-for="(tab, index) in tabs" :key="index" class="switch-tab__menu-item">
+    <div role="tablist" :class="['switch-tab__menu', `switch-tab__menu--${tabActiveDirection}`]">
+      <div v-for="(tab, key) in tabs" :key="key" class="switch-tab__menu-item">
         <a
-          :href="'#switch-tab-'+tab.id+'-panel'"
-          :id="'switch-tab-'+tab.id+'-btn'"
           role="tab"
-          :aria-controls="'switch-tab-'+tab.id+'-panel'"
-          :aria-selected="tab.id === tabActiveId"
-          :class="['switch-tab__menu-btn', { 'is-active' : tab.id === tabActiveId }]"
-          @click.prevent="tabChange(tab)">
+          :href="tab.href"
+          :id="`switch-tab-${tab.id}-btn`"
+          :aria-controls="`switch-tab-${tab.id}-panel`"
+          :aria-selected="String(tab.isActive)"
+          :class="['switch-tab__menu-btn', {'is-active': tab.isActive}]"
+          @click="tabChange(tab)">
           {{tab.label}}
         </a>
       </div>
     </div>
-    <slot></slot>
+    <div class="switch-tab__panel-area">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
     name: 'app-switch-tab',
-    model: {
-      prop: 'tabActiveId',
-    },
-    props: {
-      tabActiveId: {
-        type: String,
-      },
-    },
     data() {
       return {
         tabs: [],
+        tabDirectionType: ['left', 'right'],
       };
     },
     methods: {
-      tabChange(tab) {
-        this.$emit('tab-change', tab);
+      tabChange(activeTab) {
+        this.tabs.forEach((tab, index) => {
+          this.tabs[index].isActive = tab.id === activeTab.id;
+        });
+      },
+      findActiveTab(tab) {
+        return tab.isActive === true;
       },
     },
     computed: {
       tabActiveDirection() {
-        let direction = null;
-        this.tabs.forEach((tab, index) => {
-          if (tab.id === this.tabActiveId) {
-            direction = index === 0 ? 'left' : 'right';
-          }
-        });
-        return direction;
+        return this.tabDirectionType[this.tabs.findIndex(this.findActiveTab)];
       },
     },
     created() {
       this.$children.splice(2, this.$children.length);
       this.$slots.default.splice(2, this.$slots.default.length);
       this.tabs = this.$children;
+    },
+    mounted() {
+      if (this.tabs.find(this.findActiveTab) === undefined) {
+        this.tabs[0].isActive = true;
+      }
     },
   };
 </script>

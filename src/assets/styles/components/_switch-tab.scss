@@ -30,10 +30,6 @@
   background-color: #fff;
   border-radius: 2px;
   opacity: .3;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -47,31 +43,11 @@
   height: 4px;
   background-color: #fff;
   border-radius: 2px;
-  -webkit-transform: translate(-100%, -50%);
-  -moz-transform: translate(-100%, -50%);
-  -o-transform: translate(-100%, -50%);
-  -ms-transform: translate(-100%, -50%);
   transform: translate(-100%, -50%);
-  -webkit-transition: -webkit-transform .4s;
-  -moz-transition: -moz-transform .4s;
-  -o-transition: -o-transform .4s;
-  -ms-transform: -ms-transform .4s;
   transition: transform .4s;
 }
 
-.switch-tab__menu--left:after {
-  /*-webkit-transform: translate(-100%, -50%);
-  -moz-transform: translate(-100%, -50%);
-  -o-transform: translate(-100%, -50%);
-  -ms-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);*/
-}
-
 .switch-tab__menu--right:after {
-  -webkit-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
 
@@ -99,61 +75,17 @@
   opacity: 1;
 }
 
+.switch-tab__panel-area {
+
+}
+
 .switch-tab__panel {
   display: none;
 }
 
 .switch-tab__panel.is-expanded {
   display: block;
-  -webkit-animation: switch-tab-panel 1s;
-  -moz-animation: switch-tab-panel 1s;
-  -o-animation: switch-tab-panel 1s;
-  -ms-animation: switch-tab-panel 1s;
   animation: switch-tab-panel 1s;
-}
-
-@-webkit-keyframes switch-tab-panel {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-}
-
-@-moz-keyframes switch-tab-panel {
-  0% {
-    opacity: 0;
-    -moz-transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    -moz-transform: translateY(0);
-  }
-}
-
-@-o-keyframes switch-tab-panel {
-  0% {
-    opacity: 0;
-    -o-transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    -o-transform: translateY(0);
-  }
-}
-
-@-ms-keyframes switch-tab-panel {
-  0% {
-    opacity: 0;
-    -ms-transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    -ms-transform: translateY(0);
-  }
 }
 
 @keyframes switch-tab-panel {

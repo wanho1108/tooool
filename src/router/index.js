@@ -4,6 +4,7 @@ import AppMain from '@/pages/app-main';
 import AppAbout from '@/pages/app-about';
 import AppWebFont from '@/pages/app-webfont';
 import AppCalculator from '@/pages/app-calculator';
+import AppCalculatorTest from '@/pages/app-calculator.bak';
 import AppDevice from '@/pages/app-device';
 import AppContrast from '@/pages/app-contrast';
 import AppTest from '@/pages/app-test';
@@ -13,8 +14,8 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/test',
-      name: 'AppTest',
+      path: '/test/:id?',
+      name: 'test',
       component: AppTest,
       meta: {
         layoutShow: true,
@@ -22,7 +23,7 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'AppMain',
+      name: 'main',
       component: AppMain,
       meta: {
         layoutShow: true,
@@ -30,7 +31,7 @@ export default new Router({
     },
     {
       path: '/about',
-      name: 'AppAbout',
+      name: 'about',
       component: AppAbout,
       meta: {
         layoutShow: false,
@@ -38,23 +39,31 @@ export default new Router({
     },
     {
       path: '/webfont',
-      name: 'AppWebFont',
+      name: 'webfont',
       component: AppWebFont,
       meta: {
         layoutShow: true,
       },
     },
     {
-      path: '/calculator',
-      name: 'AppCalculator',
+      path: '/calculator/:id?',
+      name: 'calculator',
       component: AppCalculator,
       meta: {
         layoutShow: true,
       },
     },
     {
+      path: '/calculator-test',
+      name: 'calculatorTest',
+      component: AppCalculatorTest,
+      meta: {
+        layoutShow: true,
+      },
+    },
+    {
       path: '/device',
-      name: 'AppDevice',
+      name: 'device',
       component: AppDevice,
       meta: {
         layoutShow: true,
@@ -62,7 +71,7 @@ export default new Router({
     },
     {
       path: '/contrast',
-      name: 'AppContrast',
+      name: 'contrast',
       component: AppContrast,
       meta: {
         layoutShow: true,

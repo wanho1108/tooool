@@ -1,30 +1,39 @@
 <template>
   <div
-    :id="'switch-tab-'+id+'-panel'"
     role="panel"
-    :aria-hidden="!tabActiveIs"
-    :aria-expanded="tabActiveIs"
-    :aria-labelledby="'switch-tab-'+id+'-tab'"
-    :class="['switch-tab__panel', { 'is-expanded': tabActiveIs }]">
+    :id="`switch-tab-${id}-panel`"
+    :aria-labelledby="`switch-tab-${id}-btn`"
+    :aria-expanded="String(isActive)"
+    :aria-hidden="String(isActive === false)"
+    :class="['switch-tab__panel', {'is-expanded': isActive}]">
     <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'app-switch-tab-panel',
+    name: 'app-switch-panel',
     props: {
       label: {
         type: String,
-      },
-      id: {
-        type: String,
+        required: true,
       },
     },
+    data() {
+      return {
+        isActive: false,
+      };
+    },
     computed: {
-      tabActiveIs() {
-        return this.$parent.tabActiveId === this.id;
+      id() {
+        return this.label.toLowerCase().replace(/ /g, '-');
       },
+      href() {
+        return `#${this.$route.name}/${this.id}`;
+      },
+    },
+    created() {
+      this.isActive = this.id === this.$route.params.id;
     },
   };
 </script>
