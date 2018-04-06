@@ -28,9 +28,6 @@
       id() {
         return this.label.toLowerCase().replace(/ /g, '-');
       },
-      href() {
-        return `/${this.$route.name}/${this.id}`;
-      },
     },
     created() {
       this.isActive = this.id === this.$route.params.id;
