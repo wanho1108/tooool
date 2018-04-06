@@ -1,6 +1,6 @@
 <template>
   <div class="header__util">
-    <router-link :to="to" :aria-selected="`${isActive}`" :class="['header__util-anchor', {'is-selected': isActive}]" @click.native="activeUpdate">About</router-link>
+    <router-link :to="to" :aria-selected="`${isActive}`" :class="['header__util-anchor', {'is-active': isActive}]" @click.native="activeUpdate">About</router-link>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
     },
     methods: {
       activeUpdate(e) {
-        this.isActive = e.target.classList.contains('is-selected') === false;
+        this.isActive = e.target.classList.contains('is-active') === false;
       },
     },
     computed: {

@@ -44,8 +44,9 @@
   text-align: center;
 }
 
-.lnb__anchor.is-selected {
+.lnb__anchor.is-active {
   opacity: 1;
+  pointer-events: none;
 }
 
 .lnb__anchor:before {

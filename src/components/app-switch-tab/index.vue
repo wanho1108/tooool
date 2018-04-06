@@ -26,6 +26,7 @@
     data() {
       return {
         tabs: [],
+        tabMaxLength: 2,
         tabDirectionType: ['left', 'right'],
       };
     },
@@ -35,18 +36,21 @@
           this.tabs[index].isActive = tab.id === activeTab.id;
         });
       },
-      findActiveTab(tab) {
-        return tab.isActive === true;
-      },
     },
     computed: {
       tabActiveDirection() {
-        return this.tabDirectionType[this.tabs.findIndex(this.findActiveTab)];
+        return this.tabDirectionType[this.tabs.findIndex(tab => tab.isActive === true)];
       },
     },
     mounted() {
       this.tabs = this.$children.filter(element => element.$options._componentTag === 'app-switch-tab-panel');
-      if (this.tabs.find(this.findActiveTab) === undefined) {
+      /*
+      if (this.tabs.length > this.tabMaxLength) {
+        this.tabs.splice(this.tabMaxLength, this.tabs.length);
+        this.$slots.default.splice(this.tabMaxLength, this.tabs.length);
+      }
+      */
+      if (this.tabs.find(tab => tab.isActive === true) === undefined) {
         this.tabs[0].isActive = true;
       }
     },
