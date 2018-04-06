@@ -4,7 +4,7 @@
         <app-content-heading>Calculator</app-content-heading>
         <app-switch-tab>
           <app-switch-tab-panel label="Grid">
-            .Grid Panel
+            <app-calculator-grid></app-calculator-grid>
           </app-switch-tab-panel>
           <app-switch-tab-panel label="Golden">
             .Golden Panel
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import AppCalculatorGrid from '@/pages/app-calculator/app-calculator-grid';
   import AppContentHeading from '@/components/app-content-heading';
   import AppSwitchTab from '@/components/app-switch-tab';
   import AppSwitchTabPanel from '@/components/app-switch-tab/app-switch-tab-panel';
@@ -22,6 +23,7 @@
   export default {
     name: 'app-calculator',
     components: {
+      AppCalculatorGrid,
       AppContentHeading,
       AppSwitchTab,
       AppSwitchTabPanel,

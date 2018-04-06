@@ -7,21 +7,12 @@ import AppCalculator from '@/pages/app-calculator';
 import AppCalculatorTest from '@/pages/app-calculator.bak';
 import AppDevice from '@/pages/app-device';
 import AppContrast from '@/pages/app-contrast';
-import AppTest from '@/pages/app-test';
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/test/:id?',
-      name: 'test',
-      component: AppTest,
-      meta: {
-        layoutShow: true,
-      },
-    },
     {
       path: '/',
       name: 'main',
@@ -50,6 +41,7 @@ export default new Router({
       path: '/calculator/:id?',
       name: 'calculator',
       component: AppCalculator,
+      props: true,
       meta: {
         layoutShow: true,
       },
