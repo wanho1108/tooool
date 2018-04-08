@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/*=
+
+  @group Components
+  @name Message
+  @author wanho1108 <wanho1108@gmail.com>
+  @since 2018-04-07
+
+*/
+
+.message {
+
+}
+
+.message--error {
+
+}
+
+.message--error .message__title {
+  font-weight: 600;
+  font-size: 5rem;
+}
+
+.message--error .message__paragraph {
+  margin-top: 25px;
+  font-size: 1.8rem;
+  letter-spacing: -.03em;
+  opacity: .3;
+}
