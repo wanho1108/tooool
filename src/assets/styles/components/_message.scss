@@ -14,7 +14,7 @@
 }
 
 .message--error {
-
+  display: none;
 }
 
 .message--error .message__title {
@@ -27,4 +27,8 @@
   font-size: 1.8rem;
   letter-spacing: -.03em;
   opacity: .3;
+}
+
+.message--error.is-expanded {
+  display: block;
 }
