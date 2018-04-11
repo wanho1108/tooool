@@ -39,18 +39,18 @@
     },
     computed: {
       tabActiveDirection() {
-        return this.tabDirectionType[this.tabs.findIndex(tab => tab.isActive === true)];
+        let direction = this.tabDirectionType[0];
+        this.tabs.forEach((tab, index) => {
+          if (tab.isActive) {
+            direction = this.tabDirectionType[index];
+          }
+        });
+        return direction;
       },
     },
     mounted() {
       this.tabs = this.$children.filter(element => element.$options._componentTag === 'app-switch-tab-panel');
-      /*
-      if (this.tabs.length > this.tabMaxLength) {
-        this.tabs.splice(this.tabMaxLength, this.tabs.length);
-        this.$slots.default.splice(this.tabMaxLength, this.tabs.length);
-      }
-      */
-      if (this.tabs.find(tab => tab.isActive === true) === undefined) {
+      if (this.tabs.filter(tab => tab.isActive === true).length === 0) {
         this.tabs[0].isActive = true;
       }
     },

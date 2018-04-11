@@ -30,12 +30,12 @@
 
 */
 
-.input--underline {
+.input--calculator {
   position: relative;
   padding: 15px 0;
 }
 
-.input--underline:before {
+.input--calculator:before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -46,7 +46,7 @@
   opacity: .3;
 }
 
-.input--underline:after {
+.input--calculator:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -55,41 +55,29 @@
   height: 1px;
   background-color: #fff;
   opacity: 0;
-  -webkit-transition: opacity .4s, width 0s .4s;
-  -moz-transition: opacity .4s, width 0s .4s;
-  -o-transition: opacity .4s, width 0s .4s;
-  -ms-transition: opacity .4s, width 0s .4s;
   transition: opacity .4s, width 0s .4s;
 }
 
-.input--underline.is-focus:after {
+.input--calculator.is-active:after {
   width: 100%;
   opacity: 1;
-  -webkit-transition: width .4s;
-  -moz-transition: width .4s;
-  -o-transition: width .4s;
-  -ms-transition: width .4s;
   transition: width .4s;
 }
 
-.input--underline .input__label {
+.input--calculator .input__label {
   position: absolute;
   top: 50%;
   left: 0;
   font-size: 1.5rem;
   letter-spacing: -.03em;
-  -webkit-transform: translateY(-50%);
-  -mos-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
-.input--underline .input__label--en {
+/*.input--calculator .input__label--en {
   font-size: 1.8rem;
-}
+}*/
 
-.input--underline .input__substance {
+.input--calculator .input__substance {
   width: 80px;
   height: 23px;
   padding-right: 27px;
@@ -102,19 +90,15 @@
   text-align: right;
 }
 
-.input--underline .input__substance--cols {
+/*.input--calculator .input__substance--cols {
   padding-right: 38px;
-}
+}*/
 
-.input--underline .input__unit {
+.input--calculator .input__unit {
   position: absolute;
   top: 50%;
   right: 0;
   font-size: 1.8rem;
-  -webkit-transform: translateY(-50%);
-  -mos-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   pointer-events: none;
 }

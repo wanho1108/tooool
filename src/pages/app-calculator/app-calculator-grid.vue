@@ -2,12 +2,61 @@
   <div class="calculator">
     <div class="calculator-fieldset">
       <div class="calculator-fieldset__column">
-        <app-input type="number" id="input-grid-width">
-          <label slot="label">전체넓이</label>
-          <span>asdf</span>
+        <app-input
+          type="number"
+          id="input-grid-width"
+          label="전체넓이"
+          title="전체넓이(px)를 입력해주세요."
+          :placeholder="placeholderData.width"
+          :max="4"
+          unit="px"
+          class="input--calculator"
+          v-model="userData.width"
+          @input="gridUpdate()">
         </app-input>
       </div>
-      <div class="calculator-fieldset__column"></div>
+      <div class="calculator-fieldset__column">
+        <app-input
+          type="number"
+          id="input-grid-columns"
+          label="나눌개수"
+          title="나눌개수(cols)를 입력해주세요."
+          :placeholder="placeholderData.columns"
+          :max="2"
+          unit="cols"
+          class="input--calculator"
+          v-model="userData.columns"
+          @input="gridUpdate()">
+        </app-input>
+      </div>
+      <div class="calculator-fieldset__column">
+        <app-input
+          type="number"
+          id="input-grid-gutter"
+          label="사이간격"
+          title="사이간격(px)를 입력해주세요."
+          :placeholder="placeholderData.gutter"
+          :max="4"
+          unit="px"
+          class="input--calculator"
+          v-model="userData.gutter"
+          @input="gridUpdate()">
+        </app-input>
+      </div>
+      <div class="calculator-fieldset__column">
+        <app-input
+          type="number"
+          id="input-grid-margin"
+          label="좌우여백"
+          title="좌우여백(px)를 입력해주세요."
+          :placeholder="placeholderData.margin"
+          :max="4"
+          unit="px"
+          class="input--calculator"
+          v-model="userData.margin"
+          @input="gridUpdate()">
+        </app-input>
+      </div>
     </div>
     <div :class="['calculator-result', {'is-expanded': !isError, 'is-placeholder': isPlaceholder}]">
       <div class="calculator-result__summary">
