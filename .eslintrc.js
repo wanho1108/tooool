@@ -34,6 +34,7 @@ module.exports = {
       baseIndent: 1
     }],*/
     'max-len': 'off',
+    'func-names': ['error', 'never'],
     'no-underscore-dangle': 'off',
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

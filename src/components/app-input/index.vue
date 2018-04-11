@@ -54,7 +54,7 @@
     methods: {
       inputUpdate() {
         const $input = this.$el.querySelector('.input__substance');
-        const valueLimit = parseInt($input.value.slice(0, this.maxlength || this.max), 10);
+        const valueLimit = $input.value.slice(0, this.maxlength || this.max);
         this.$emit('input', $input.value = valueLimit);
       },
     },

@@ -58,47 +58,56 @@
         </app-input>
       </div>
     </div>
-    <div :class="['calculator-result', {'is-expanded': !isError, 'is-placeholder': isPlaceholder}]">
-      <div class="calculator-result__summary">
-        <div class="calculator-result__summary-item">
-          <em class="calculator-result__summary-label">전체넓이</em>
-          <span class="calculator-result__summary-value calculator-result__summary-value--width">{{calculatorData.width}}</span>
-          <span class="calculator-result__summary-unit">px</span>
-        </div>
-        <div class="calculator-result__summary-item">
-          <em class="calculator-result__summary-label">나눈넓이</em>
-          <span class="calculator-result__summary-value">{{calculatorData.columnWidth}}</span>
-          <span class="calculator-result__summary-unit">px</span>
-        </div>
-      </div>
-      <div class="calculator-result__visualization" aria-hidden="true">
-        <div class="calculator-result__visualization-measurement">{{calculatorData.width}}</div>
-        <div class="calculator-result__visualization-column-area">
-          <div
-            v-if="calculatorData.margin"
-            class="calculator-result__visualization-column calculator-result__visualization-column--pale">
-            {{calculatorData.margin}}
+    <div class="calculator-result" aria-live="polite" aria-atomic="true">
+      <div :class="['calculator-result__detail', {'is-show': !isError, 'is-placeholder': isPlaceholder}]">
+        <div :class="['calculator-result__summary', {'is-show': !isError}]">
+          <div class="calculator-result__summary-item">
+            <em class="calculator-result__summary-label">전체넓이</em>
+            <span class="calculator-result__summary-value calculator-result__summary-value--width">{{calculatorData.width}}</span>
+            <span class="calculator-result__summary-unit">px</span>
           </div>
-          <template v-for="(index, key) in calculatorData.columns">
-            <div class="calculator-result__visualization-column" :key="`column width ${key}`">
-              {{calculatorData.columnWidth}}
-            </div>
-            <div v-if="calculatorData.gutter && index < calculatorData.columns"
-                 class="calculator-result__visualization-column calculator-result__visualization-column--pale"
-                 :key="`column gutter ${key}`">
-              {{calculatorData.gutter}}
-            </div>
-          </template>
-          <div
-            v-if="calculatorData.margin"
-            class="calculator-result__visualization-column calculator-result__visualization-column--pale">
-            {{calculatorData.margin}}
+          <div class="calculator-result__summary-item">
+            <em class="calculator-result__summary-label">나눈넓이</em>
+            <span class="calculator-result__summary-value">{{calculatorData.columnWidth}}</span>
+            <span class="calculator-result__summary-unit">px</span>
           </div>
         </div>
+        <div :class="['calculator-result__visualization', {'is-show': !isError}]">
+          <div class="calculator-result__visualization-measurement" aria-label="전체넓이">{{calculatorData.width}}</div>
+          <div class="calculator-result__visualization-column-area">
+            <div
+              v-if="calculatorData.margin"
+              class="calculator-result__visualization-column calculator-result__visualization-column--pale"
+              aria-label="전체여백">
+              {{calculatorData.margin}}
+            </div>
+            <template v-for="(index, key) in calculatorData.columns">
+              <div class="calculator-result__visualization-column"
+                   :key="`column width ${key}`"
+                   aria-label="나눈넓이">
+                {{calculatorData.columnWidth}}
+              </div>
+              <div v-if="calculatorData.gutter && index < calculatorData.columns"
+                   class="calculator-result__visualization-column calculator-result__visualization-column--pale"
+                   :key="`column gutter ${key}`"
+                   aria-label="사이간격">
+                {{calculatorData.gutter}}
+              </div>
+            </template>
+            <div
+              v-if="calculatorData.margin"
+              class="calculator-result__visualization-column calculator-result__visualization-column--pale"
+              aria-label="전체여백">
+              {{calculatorData.margin}}
+            </div>
+          </div>
+        </div>
       </div>
-      <div :class="['message message--error', {'is-expanded': isError}]">
-        <em class="message__title">Oooops :-O</em>
-        <p class="message__paragraph">입력된 숫자가 너어어어어무 커요~ 다시 입력해보세요!</p>
+      <div :class="['calculator-result__message', {'is-show': isError}]">
+        <div class="message message--error">
+          <em class="message__title">Oooops :-O</em>
+          <p class="message__paragraph">입력된 숫자가 너어어어어무 커요~ 다시 입력해보세요!</p>
+        </div>
       </div>
     </div>
   </div>
@@ -106,6 +115,7 @@
 
 <script>
   import AppInput from '@/components/app-input';
+  import debounce from '@/helpers/debounce';
 
   export default {
     name: 'app-calculator-grid',
@@ -138,24 +148,26 @@
       calculatorDataUpdate(value) {
         const calculatorData = this.calculatorData;
         Object.assign(calculatorData, value);
+        Object.keys(calculatorData).forEach((key) => {
+          calculatorData[key] = Number(calculatorData[key]);
+        });
         calculatorData.columnWidth = (calculatorData.width - (calculatorData.margin * 2) - (calculatorData.gutter * (calculatorData.columns - 1))) / calculatorData.columns;
       },
-      gridUpdate() {
+      gridUpdate: debounce(function () {
         const calculatorData = this.calculatorData;
         this.calculatorDataUpdate(this.userData);
-        this.isPlaceholder = isNaN(parseInt(calculatorData.width, 10) && parseInt(calculatorData.columns, 10));
+        this.isPlaceholder = calculatorData.width === 0 || calculatorData.columns === 0;
         if (this.isPlaceholder) {
           this.calculatorDataUpdate(this.placeholderData);
         }
         this.isError = (calculatorData.columnWidth > 0) === false;
-        if (this.isError) {
-          return;
+        if (this.isError === false) {
+          const integerReg = /^[0-9]*$/;
+          while (integerReg.test(calculatorData.columnWidth) === false) {
+            this.calculatorDataUpdate(calculatorData.width -= 1);
+          }
         }
-        const integerReg = /^[0-9]*$/;
-        while (integerReg.test(calculatorData.columnWidth) === false) {
-          this.calculatorDataUpdate(calculatorData.width -= 1);
-        }
-      },
+      }, 200),
     },
     created() {
       this.gridUpdate();
