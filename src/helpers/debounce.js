@@ -1,8 +1,12 @@
-export default function debounce(fn, time) {
+// eslint-disable-next-line func-names
+const Debounce = function (func, time) {
   let timeout;
+  // eslint-disable-next-line func-names
   return function (...args) {
-    const functionCall = () => fn.apply(this, ...args);
+    const funcCall = () => func.apply(this, ...args);
     clearTimeout(timeout);
-    timeout = setTimeout(functionCall, time);
+    timeout = setTimeout(funcCall, time);
   };
-}
+};
+
+export default Debounce;

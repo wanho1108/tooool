@@ -81,7 +81,7 @@
               aria-label="전체여백">
               {{calculatorData.margin}}
             </div>
-            <template v-for="(index, key) in calculatorData.columns">
+            <template v-for="(index, key) in calculatorColumnsLimit">
               <div class="calculator-result__visualization-column"
                    :key="`column width ${key}`"
                    aria-label="나눈넓이">
@@ -115,7 +115,6 @@
 
 <script>
   import AppInput from '@/components/app-input';
-  import debounce from '@/helpers/debounce';
 
   export default {
     name: 'app-calculator-grid',
@@ -138,6 +137,7 @@
           margin: '',
           gutter: '',
           columns: '',
+          columnsLimit: 12,
           columnWidth: '',
         },
         isPlaceholder: true,
@@ -153,7 +153,7 @@
         });
         calculatorData.columnWidth = (calculatorData.width - (calculatorData.margin * 2) - (calculatorData.gutter * (calculatorData.columns - 1))) / calculatorData.columns;
       },
-      gridUpdate: debounce(function () {
+      gridUpdate() {
         const calculatorData = this.calculatorData;
         this.calculatorDataUpdate(this.userData);
         this.isPlaceholder = calculatorData.width === 0 || calculatorData.columns === 0;
@@ -167,7 +167,13 @@
             this.calculatorDataUpdate(calculatorData.width -= 1);
           }
         }
-      }, 200),
+      },
+    },
+    computed: {
+      calculatorColumnsLimit() {
+        const calculatorData = this.calculatorData;
+        return calculatorData.columns < calculatorData.columnsLimit ? calculatorData.columns : calculatorData.columnsLimit;
+      },
     },
     created() {
       this.gridUpdate();

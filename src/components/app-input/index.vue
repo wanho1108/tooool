@@ -17,6 +17,8 @@
 </template>
 
 <script>
+  import debounce from '@/helpers/debounce';
+
   export default {
     name: 'app-input',
     props: {
@@ -55,8 +57,17 @@
       inputUpdate() {
         const $input = this.$el.querySelector('.input__substance');
         const valueLimit = $input.value.slice(0, this.maxlength || this.max);
-        this.$emit('input', $input.value = valueLimit);
+        debounce(function () {
+          this.$emit('input', $input.value = valueLimit);
+        }, 400);
       },
+      /*
+      inputUpdate: debounce(function () {
+        const $input = this.$el.querySelector('.input__substance');
+        const valueLimit = $input.value.slice(0, this.maxlength || this.max);
+        this.$emit('input', $input.value = valueLimit);
+      }, 400),
+      */
     },
   };
 </script>

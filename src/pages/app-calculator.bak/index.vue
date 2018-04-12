@@ -130,7 +130,6 @@
   import AppSwitchTab from '@/components/app-switch-tab.bak';
   import AppSwitchTabPanel from '@/components/app-switch-tab.bak/app-switch-tab-panel';
   import AppInput from '@/components/app-input';
-  import AppInputLabel from '@/components/app-input/app-input-label';
 
   export default {
     name: 'app-calculator',
@@ -271,7 +270,6 @@
       AppSwitchTab,
       AppSwitchTabPanel,
       AppInput,
-      AppInputLabel,
     },
   };
 </script>
