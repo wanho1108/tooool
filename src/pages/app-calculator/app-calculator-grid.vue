@@ -1,5 +1,6 @@
 <template>
   <div class="calculator">
+    <!-- [S] Calculator Grid 입력 폼 -->
     <div class="calculator-fieldset">
       <div class="calculator-fieldset__column">
         <app-input
@@ -8,11 +9,11 @@
           label="전체넓이"
           title="전체넓이(px)를 입력해주세요."
           :placeholder="placeholderData.width"
-          :max="4"
+          :maxlength="4"
           unit="px"
           class="input--calculator"
-          v-model="userData.width"
-          @input="gridUpdate()">
+          v-model.number="userData.width"
+          @input="inputUpdate()">
         </app-input>
       </div>
       <div class="calculator-fieldset__column">
@@ -22,11 +23,11 @@
           label="나눌개수"
           title="나눌개수(cols)를 입력해주세요."
           :placeholder="placeholderData.columns"
-          :max="2"
+          :maxlength="2"
           unit="cols"
           class="input--calculator"
-          v-model="userData.columns"
-          @input="gridUpdate()">
+          v-model.number="userData.columns"
+          @input="inputUpdate()">
         </app-input>
       </div>
       <div class="calculator-fieldset__column">
@@ -36,11 +37,11 @@
           label="사이간격"
           title="사이간격(px)를 입력해주세요."
           :placeholder="placeholderData.gutter"
-          :max="4"
+          :maxlength="2"
           unit="px"
           class="input--calculator"
-          v-model="userData.gutter"
-          @input="gridUpdate()">
+          v-model.number="userData.gutter"
+          @input="inputUpdate()">
         </app-input>
       </div>
       <div class="calculator-fieldset__column">
@@ -50,16 +51,18 @@
           label="좌우여백"
           title="좌우여백(px)를 입력해주세요."
           :placeholder="placeholderData.margin"
-          :max="4"
+          :maxlength="2"
           unit="px"
           class="input--calculator"
-          v-model="userData.margin"
-          @input="gridUpdate()">
+          v-model.number="userData.margin"
+          @input="inputUpdate()">
         </app-input>
       </div>
     </div>
+    <!-- [E] Calculator Grid 입력 폼 -->
     <div class="calculator-result" aria-live="polite" aria-atomic="true">
       <div :class="['calculator-result__detail', {'is-show': !isError, 'is-placeholder': isPlaceholder}]">
+        <!-- [S] Calculator Grid 간략 결과 -->
         <div :class="['calculator-result__summary', {'is-show': !isError}]">
           <div class="calculator-result__summary-item">
             <em class="calculator-result__summary-label">전체넓이</em>
@@ -68,10 +71,12 @@
           </div>
           <div class="calculator-result__summary-item">
             <em class="calculator-result__summary-label">나눈넓이</em>
-            <span class="calculator-result__summary-value">{{calculatorData.columnWidth}}</span>
+            <span class="calculator-result__summary-value">{{getColumnWidth}}</span>
             <span class="calculator-result__summary-unit">px</span>
           </div>
         </div>
+        <!-- [E] Calculator Grid 간략 결과 -->
+        <!-- [S] Calculator Grid 결과 추상화 -->
         <div :class="['calculator-result__visualization', {'is-show': !isError}]">
           <div class="calculator-result__visualization-measurement" aria-label="전체넓이">{{calculatorData.width}}</div>
           <div class="calculator-result__visualization-column-area">
@@ -81,13 +86,13 @@
               aria-label="전체여백">
               {{calculatorData.margin}}
             </div>
-            <template v-for="(index, key) in calculatorColumnsLimit">
+            <template v-for="(index, key) in getColumnsLimit">
               <div class="calculator-result__visualization-column"
                    :key="`column width ${key}`"
                    aria-label="나눈넓이">
-                {{calculatorData.columnWidth}}
+                {{getColumnWidth}}
               </div>
-              <div v-if="calculatorData.gutter && index < calculatorData.columns"
+              <div v-if="calculatorData.gutter && index < getColumnsLimit"
                    class="calculator-result__visualization-column calculator-result__visualization-column--pale"
                    :key="`column gutter ${key}`"
                    aria-label="사이간격">
@@ -102,18 +107,22 @@
             </div>
           </div>
         </div>
+        <!-- [E] Calculator Grid 결과 추상화 -->
       </div>
+      <!-- [S] Calculator Grid 에러 메세지 -->
       <div :class="['calculator-result__message', {'is-show': isError}]">
         <div class="message message--error">
           <em class="message__title">Oooops :-O</em>
           <p class="message__paragraph">입력된 숫자가 너어어어어무 커요~ 다시 입력해보세요!</p>
         </div>
       </div>
+      <!-- [E] Calculator Grid 에러 메세지 -->
     </div>
   </div>
 </template>
 
 <script>
+  import debounce from '@/helpers/debounce';
   import AppInput from '@/components/app-input';
 
   export default {
@@ -137,46 +146,44 @@
           margin: '',
           gutter: '',
           columns: '',
-          columnsLimit: 12,
-          columnWidth: '',
         },
         isPlaceholder: true,
         isError: false,
       };
     },
     methods: {
-      calculatorDataUpdate(value) {
-        const calculatorData = this.calculatorData;
-        Object.assign(calculatorData, value);
-        Object.keys(calculatorData).forEach((key) => {
-          calculatorData[key] = Number(calculatorData[key]);
-        });
-        calculatorData.columnWidth = (calculatorData.width - (calculatorData.margin * 2) - (calculatorData.gutter * (calculatorData.columns - 1))) / calculatorData.columns;
-      },
-      gridUpdate() {
-        const calculatorData = this.calculatorData;
-        this.calculatorDataUpdate(this.userData);
-        this.isPlaceholder = calculatorData.width === 0 || calculatorData.columns === 0;
+      calculatorDataUpdate() {
+        this.isPlaceholder = (this.userData.width > 0 && this.userData.columns > 0) === false;
         if (this.isPlaceholder) {
-          this.calculatorDataUpdate(this.placeholderData);
+          Object.assign(this.calculatorData, this.placeholderData);
+        } else {
+          Object.assign(this.calculatorData, this.userData);
         }
-        this.isError = (calculatorData.columnWidth > 0) === false;
+        this.isError = (this.getColumnWidth > 0) === false;
         if (this.isError === false) {
           const integerReg = /^[0-9]*$/;
-          while (integerReg.test(calculatorData.columnWidth) === false) {
-            this.calculatorDataUpdate(calculatorData.width -= 1);
+          while (integerReg.test(this.getColumnWidth) === false) {
+            this.calculatorData -= 1;
           }
         }
       },
+      // eslint-disable-next-line func-names
+      inputUpdate: debounce(function () {
+        this.calculatorDataUpdate();
+      }, 200),
     },
     computed: {
-      calculatorColumnsLimit() {
-        const calculatorData = this.calculatorData;
-        return calculatorData.columns < calculatorData.columnsLimit ? calculatorData.columns : calculatorData.columnsLimit;
+      getColumnWidth() {
+        const columnWidth = parseInt((this.calculatorData.width - (this.calculatorData.margin * 2) - (this.calculatorData.gutter * (this.calculatorData.columns - 1))) / this.calculatorData.columns, 10);
+        return columnWidth;
+      },
+      getColumnsLimit() {
+        const columnLimit = 12;
+        return Math.min(this.calculatorData.columns, columnLimit);
       },
     },
     created() {
-      this.gridUpdate();
+      this.calculatorDataUpdate();
     },
     components: {
       AppInput,

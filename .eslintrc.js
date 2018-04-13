@@ -29,9 +29,12 @@ module.exports = {
     'eol-last': ['error', 'never'],
     'linebreak-style': ['error', 'windows'],
     'indent': 'off',
-    'indent-legacy': ['error', 2],
+    'indent-legacy': ['error', 2, {
+      'SwitchCase': 1
+    }],
     'max-len': 'off',
     'no-underscore-dangle': 'off',
+    'arrow-body-style': ['error', 'always'],
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       js: 'never',

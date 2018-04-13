@@ -7,18 +7,16 @@
       :title="title"
       :placeholder="placeholder"
       :maxlength="maxlength"
-      :max="max"
+      :value="value"
       class="input__substance"
-      @focus="isActive = true"
-      @blur="isActive = false"
-      @input="inputUpdate()">
+      @focus="inputFocus()"
+      @blur="inputBlur()"
+      @input="inputUpdate($event.target.value)">
     <span v-if="unit" class="input__unit" aria-hidden="true">{{unit}}</span>
   </div>
 </template>
 
 <script>
-  import debounce from '@/helpers/debounce';
-
   export default {
     name: 'app-input',
     props: {
@@ -41,11 +39,10 @@
       maxlength: {
         type: Number,
       },
-      max: {
-        type: Number,
-      },
       unit: {
         type: String,
+      },
+      value: {
       },
     },
     data() {
@@ -54,20 +51,21 @@
       };
     },
     methods: {
-      inputUpdate() {
-        const $input = this.$el.querySelector('.input__substance');
-        const valueLimit = $input.value.slice(0, this.maxlength || this.max);
-        debounce(function () {
-          this.$emit('input', $input.value = valueLimit);
-        }, 400);
+      inputFocus() {
+        this.inputUpdate('');
+        this.isActive = true;
       },
-      /*
-      inputUpdate: debounce(function () {
+      inputBlur() {
+        this.isActive = false;
+      },
+      inputUpdate(value) {
         const $input = this.$el.querySelector('.input__substance');
-        const valueLimit = $input.value.slice(0, this.maxlength || this.max);
-        this.$emit('input', $input.value = valueLimit);
-      }, 400),
-      */
+        let _value = value;
+        if (this.type === 'number') {
+          _value = _value.slice(0, this.maxlength);
+        }
+        this.$emit('input', $input.value = _value);
+      },
     },
   };
 </script>

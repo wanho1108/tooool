@@ -49,7 +49,10 @@
       },
     },
     mounted() {
-      this.tabs = this.$children.filter(element => element.$options._componentTag === 'app-switch-tab-panel');
+      this.tabs = this.$children.filter((element) => {
+        return element.$options._componentTag === 'app-switch-tab-panel';
+      });
+      // eslint-disable-next-line arrow-body-style
       if (this.tabs.filter(tab => tab.isActive === true).length === 0) {
         this.tabs[0].isActive = true;
       }
