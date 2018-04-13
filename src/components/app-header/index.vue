@@ -6,21 +6,21 @@
           <span class="blind">TOOOOL</span>
         </router-link>
       </h1>
-      <app-lnb></app-lnb>
-      <app-header-util></app-header-util>
+      <header-nav></header-nav>
+      <header-util></header-util>
     </div>
   </header>
 </template>
 
 <script>
-  import AppLnb from '@/components/app-lnb/';
-  import AppHeaderUtil from '@/components/app-header/app-header-util';
+  import HeaderNav from '@/components/app-header/header-nav';
+  import HeaderUtil from '@/components/app-header/header-util';
 
   export default {
     name: 'app-header',
     components: {
-      AppLnb,
-      AppHeaderUtil,
+      HeaderNav,
+      HeaderUtil,
     },
   };
 </script>

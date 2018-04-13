@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Main from '@/pages/main';
+import Index from '@/pages/index';
 import About from '@/pages/about';
 import WebFont from '@/pages/webfont';
 import Calculator from '@/pages/calculator';
@@ -14,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main',
-      component: Main,
+      name: 'index',
+      component: Index,
     },
     {
       path: '/about',

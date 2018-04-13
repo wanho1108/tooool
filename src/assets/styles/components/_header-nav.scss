@@ -3,39 +3,39 @@
 /*=
 
   @group Components
-  @name Lnb
+  @name Header Nav
   @author wanho1108 <wanho1108@gmail.com>
   @since 2018-03-12
 
 */
 
-.has-layout .lnb {
-  opacity: 1;
-  pointer-events: auto;
+.no-layout .header__nav {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.lnb {
+.header__nav {
   position: absolute;
   top: 40px;
   left: 50%;
   font-size: 0;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transform: translateX(-50%);
   transition: opacity .4s;
 }
 
-.lnb__wrapper {
+.header__nav-wrapper {
 
 }
 
-.lnb__listitem {
+.header__nav-listitem {
   display: inline-block;
   margin: 0 15px;
   vertical-align: top;
 }
 
-.lnb__anchor {
+.header__nav-anchor {
   display: block;
   width: 36px;
   height: 36px;
@@ -44,12 +44,12 @@
   text-align: center;
 }
 
-.lnb__anchor.is-active {
+.header__nav-anchor.is-active {
   opacity: 1;
   pointer-events: none;
 }
 
-.lnb__anchor:before {
+.header__nav-anchor:before {
   content: '';
   display: inline-block;
   width: 0;
@@ -57,32 +57,32 @@
   vertical-align: middle;
 }
 
-.lnb__ico {
+.header__nav-ico {
   display: inline-block;
   background-position: 0 0;
   background-repeat: no-repeat;
   vertical-align: middle;
 }
 
-.lnb__ico--webfont {
+.header__nav-ico--webfont {
   width: 32px;
   height: 23px;
   background-image: url(../image/ico-webfont-32x23-fff.png);
 }
 
-.lnb__ico--calculator {
+.header__nav-ico--calculator {
   width: 24px;
   height: 22px;
   background-image: url(../image/ico-calculator-24x22-fff.png);
 }
 
-.lnb__ico--device {
+.header__nav-ico--device {
   width: 22px;
   height: 22px;
   background-image: url(../image/ico-device-22x22-fff.png);
 }
 
-.lnb__ico--contrast {
+.header__nav-ico--contrast {
   width: 22px;
   height: 22px;
   background-image: url(../image/ico-contrast-22x22-fff.png);

@@ -10,7 +10,7 @@
   import ContentHeading from '@/components/content-heading';
 
   export default {
-    name: 'main',
+    name: 'index',
     components: {
       ContentHeading,
     },
