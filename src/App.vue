@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper" :class="{ 'has-layout': $route.meta.layoutShow }">
+  <div id="wrapper" :class="{ 'has-layout': $route.meta.noLayout }">
     <app-header></app-header>
     <router-view></router-view>
     <app-footer></app-footer>

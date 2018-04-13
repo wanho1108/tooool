@@ -114,7 +114,7 @@
   import AppInput from '@/components/app-input';
 
   export default {
-    name: 'app-calculator-golden',
+    name: 'calculator-golden',
     data() {
       return {
         userData: {
