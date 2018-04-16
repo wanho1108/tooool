@@ -1,15 +1,15 @@
 <template>
   <main class="content" role="main">
     <div class="content__wrapper">
-        <content-heading>Calculator</content-heading>
-        <switch-tab>
-          <switch-tab-panel label="Grid">
-            <calculator-grid></calculator-grid>
-          </switch-tab-panel>
-          <switch-tab-panel label="Golden">
-            <calculator-golden></calculator-golden>
-          </switch-tab-panel>
-        </switch-tab>
+      <content-heading>Calculator</content-heading>
+      <switch-tab>
+        <switch-tab-panel label="Grid">
+          <calculator-grid></calculator-grid>
+        </switch-tab-panel>
+        <switch-tab-panel label="Golden">
+          <calculator-golden></calculator-golden>
+        </switch-tab-panel>
+      </switch-tab>
     </div>
   </main>
 </template>

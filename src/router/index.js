@@ -26,9 +26,10 @@ export default new Router({
       },
     },
     {
-      path: '/webfont',
+      path: '/webfont/:id?',
       name: 'webfont',
       component: WebFont,
+      props: true,
     },
     {
       path: '/calculator/:id?',
