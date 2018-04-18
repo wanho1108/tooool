@@ -17,7 +17,7 @@
         <button type="button" @click="fontAlign='right'">오른쪽</button>
       </div>
       <div>
-        <select v-model="fontWeight">
+        <select @change="weight">
           <option
             v-for="(weight, key) in activeFont.weight"
             :key="key"
@@ -32,14 +32,20 @@
           ></div>
         </div>
       </div>
+      <p v-show="loading">loading!</p>
       <p :style="`
+          display: ${show};
           font-family: '${activeFont.family}';
           font-size: ${value}px;
           font-weight: ${fontWeight};
           text-align: ${fontAlign};
+          border: 1px solid ${show === 'none' ? 'red' : 'transparent'};
         `"
+         class="view2"
          contenteditable="true">
         친근하고 부드러운<br>나눔고딕
+      </p>
+      <p id="test" style="position:absolute;top:-9999px;left:-9999px">
       </p>
     </div>
   </div>
@@ -71,6 +77,21 @@
             ],
           },
           {
+            name: 'Noto Sans',
+            family: 'Noto Sans',
+            path: 'https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i',
+            weight: [
+              {
+                name: 'normal',
+                value: '400',
+              },
+              {
+                name: 'bold',
+                value: '700',
+              },
+            ],
+          },
+          {
             name: '나눔바른고딕',
             name2: 'NanumBarunGothic',
           },
@@ -79,13 +100,16 @@
             name2: 'NanumSqaure',
           },
         ],
+        loading: false,
         x: 0,
         objX: 0,
         ing: false,
         first: false,
-        min: 10,
-        max: 120,
-        value: 18,
+        min: 1,
+        max: 10,
+        decimal: 1,
+        value: 20,
+        show: 'block',
       };
     },
     methods: {
@@ -97,7 +121,46 @@
         value += number;
         return value;
       },
+      weight() {
+        this.loading = true;
+        this.show = 'none';
+        this.fontWeight = event.target.value;
+        const div = document.createElement('span');
+        const test = this.$el.querySelector('#test');
+        div.id = 'font-test';
+        div.textContent = 'giItT1WQy@!-/#';
+        div.style.fontFamily = this.activeFont.family;
+        test.appendChild(div);
+        const time = setInterval(() => {
+          const width = div.offsetWidth;
+          console.log(width);
+          if (width > 0) {
+            this.show = 'block';
+            this.loading = false;
+            clearTimeout(time);
+            test.innerHTML = '';
+          }
+        }, 0);
+      },
       activeFontChange(font) {
+        this.loading = true;
+        this.show = 'none';
+        const div = document.createElement('span');
+        const test = this.$el.querySelector('#test');
+        div.id = 'font-test';
+        div.textContent = 'giItT1WQy@!-/#';
+        div.style.fontFamily = font.family;
+        test.appendChild(div);
+        const time = setInterval(() => {
+          const width = div.offsetWidth;
+          console.log(width);
+          if (width > 0) {
+            this.show = 'block';
+            this.loading = false;
+            clearTimeout(time);
+            test.innerHTML = '';
+          }
+        }, 0);
         this.activeFont = font;
       },
       // input range
@@ -124,11 +187,11 @@
           const rangeBar = range.querySelector('.range__bar');
           const rangeWidth = range.offsetWidth;
           const moveX = event.clientX - this.x;
-          let percent = parseInt(((this.objX + moveX) / rangeWidth) * 100);
+          let percent = (((this.objX + moveX) / rangeWidth) * 100).toFixed(this.decimal);
           percent = Math.min(percent, 100);
           percent = Math.max(percent, 0);
-          rangeBar.style.left = percent + '%';
-          this.value = parseInt((((this.max - this.min) * percent) / 100) + this.min);
+          rangeBar.style.left = `${percent}%`;
+          this.value = ((((this.max - this.min) * percent) / 100) + this.min).toFixed(this.decimal);
         }
       },
     },
@@ -138,7 +201,7 @@
 <style>
   .view {
     padding: 30px;
-    border: 1px solid #fff;
+    /*border: 1px solid #fff;*/
     margin-top: 100px;
   }
   .range {
@@ -155,5 +218,18 @@
     border-radius: 35px;
     background-color: #fff;
     opacity: .5;
+  }
+  .view2 {
+    animation: view 2s;
+  }
+  @keyframes view {
+    0% {
+      opacity: 0;
+      /*transform: translateY(100px);*/
+    }
+    100% {
+      opacity: 1;
+      /*transform: translateY(0);*/
+    }
   }
 </style>
