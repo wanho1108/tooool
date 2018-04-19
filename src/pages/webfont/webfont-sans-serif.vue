@@ -32,19 +32,25 @@
           ></div>
         </div>
       </div>
-      <p v-show="loading">loading!</p>
-      <p :style="`
-          display: ${show};
-          font-family: '${activeFont.family}';
-          font-size: ${value}px;
-          font-weight: ${fontWeight};
-          text-align: ${fontAlign};
-          border: 1px solid ${show === 'none' ? 'red' : 'transparent'};
-        `"
-         class="view2"
-         contenteditable="true">
-        친근하고 부드러운<br>나눔고딕
-      </p>
+      <div :class="{'is-loading': loading}">
+        <p :style="`
+            display: ${show};
+            font-family: '${activeFont.family}';
+            font-size: ${value}px;
+            font-weight: ${fontWeight};
+            text-align: ${fontAlign};
+            border: 1px solid ${show === 'none' ? 'red' : 'transparent'};
+          `"
+           class="view2"
+           contenteditable="true">
+          드디어 성이 되었다 싶었는데 파도가 치니 곧 허물어진다. 애써 쌓은 우리의 성은 이제 흔적이 없다. 이 책은 그 모래성을 복원하는 작업이다. 새로 쌓는 모래성이 또 한번의 파도에 자취를 감추기 전에, 우리에게도 단단히 쌓은 모래성이 있었음을 기억하는 일이다.
+        </p>
+        <div class="loading-area">
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+        </div>
+      </div>
       <p id="test" style="position:absolute;top:-9999px;left:-9999px">
       </p>
     </div>
@@ -121,10 +127,7 @@
         value += number;
         return value;
       },
-      weight() {
-        this.loading = true;
-        this.show = 'none';
-        this.fontWeight = event.target.value;
+      handleLoading() {
         const div = document.createElement('span');
         const test = this.$el.querySelector('#test');
         div.id = 'font-test';
@@ -133,7 +136,6 @@
         test.appendChild(div);
         const time = setInterval(() => {
           const width = div.offsetWidth;
-          console.log(width);
           if (width > 0) {
             this.show = 'block';
             this.loading = false;
@@ -141,27 +143,39 @@
             test.innerHTML = '';
           }
         }, 0);
+        /*
+         document.querySelector('.test').addEventListener('click', function() {
+         var tag = document.createElement('link');
+         tag.href = '//fonts.googleapis.com/earlyaccess/notosanskr.css';
+         tag.rel = 'stylesheet';
+         document.body.appendChild(tag);
+         var $test = document.querySelector('.test');
+         $test.style.fontFamily = 'Noto Sans KR';
+         $test.style.color = '#ffff00';
+         var time = setInterval(function() {
+         var fontCheck = document.fonts.check('1em Noto Sans Kr');
+         if (fontCheck) {
+         console.log('적용 O');
+         clearTimeout(time);
+ 
+         } else {
+         console.log('적용 X');
+         }
+         }, 0);
+         });
+         */
+      },
+      weight() {
+        this.loading = true;
+        this.show = 'none';
+        this.fontWeight = event.target.value;
+        this.handleLoading();
       },
       activeFontChange(font) {
         this.loading = true;
         this.show = 'none';
-        const div = document.createElement('span');
-        const test = this.$el.querySelector('#test');
-        div.id = 'font-test';
-        div.textContent = 'giItT1WQy@!-/#';
-        div.style.fontFamily = font.family;
-        test.appendChild(div);
-        const time = setInterval(() => {
-          const width = div.offsetWidth;
-          console.log(width);
-          if (width > 0) {
-            this.show = 'block';
-            this.loading = false;
-            clearTimeout(time);
-            test.innerHTML = '';
-          }
-        }, 0);
         this.activeFont = font;
+        this.handleLoading();
       },
       // input range
       rangeDown() {
@@ -220,7 +234,39 @@
     opacity: .5;
   }
   .view2 {
-    animation: view 2s;
+    /*animation: view 2s;*/
+  }
+  .is-loading .loading-area {
+    display: block;
+  }
+  .loading-area {
+    display: none;
+    animation: view .4s;
+  }
+  .loading {
+    height: 20px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    border-radius: 20px;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eee 8%, #ddd 18%, #eee 33%);
+    background-size: 1000px 104px;
+    position: relative;
+    opacity: .4;
+  }
+  .loading + .loading {
+    margin-top: 5px;
+  }
+  @keyframes placeHolderShimmer{
+    0%{
+      background-position: -500px 0
+    }
+    100%{
+      background-position: 550px 0
+    }
   }
   @keyframes view {
     0% {
