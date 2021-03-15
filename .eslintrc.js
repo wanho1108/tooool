@@ -27,7 +27,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'eol-last': ['error', 'never'],
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': ['error', 'unix'],
     'indent': 'off',
     'indent-legacy': ['error', 2, {
       'SwitchCase': 1
